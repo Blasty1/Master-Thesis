@@ -1,0 +1,134 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{float}
+
+
+
+\newcommand{\elbo}{\mathcal{L}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\p}{\mathbb{P}}
+
+
+
+\title{DEGREE PROJECT PROPOSAL}
+\subtitle{Rolling Horizon Planning with Explainability for DRL-Based Engine Rescheduling}
+\author{
+Bruno Carchia \\
+\texttt{carchia@kth.se}
+}
+
+\begin{document}
+\maketitle
+
+\section{Thesis Description}
+This thesis project is part of an applied research project at RISE focusing on AI-based
+decision support for locomotive rescheduling in rail freight operations. Efficient engine
+allocation is a complex task, constrained by operational factors such as maintenance
+schedules, workshop availability, and unplanned disruptions.\\
+Locomotives are a central and limited resource for freight train operators, where operational
+flexibility and dynamic rescheduling capabilities are critical. The project is carried out in
+collaboration with Green Cargo, Sweden’s largest rail freight operator. Every day, Green
+Cargo faces the challenge of maintaining and updating locomotive rotations, while also
+coordinating with other resources such as wagons, and driver availability. Beyond improving
+operational efficiency, the company aims to enhance communication with customers during
+delays and better transfer operational expertise within the organization. Currently, there is a
+lack of advanced decision support tools for short-term planning in the rail sector since
+improved planning could directly address the industry’s key challenges: flexibility, efficiency,
+and reliability.\\
+In this thesis, the student will work with a simulation-based environment that models engine
+planning problem. The environment includes train schedules, locomotive states, maintenance
+rules, and simplified operational constraints. The existing setup uses deep reinforcement
+learning (DRL) to allocate locomotives sequentially, without explicitly considering future
+consequences.\\
+The primary objective of the thesis is to evolve this setup into a rolling planning framework,
+where decisions are made continuously across a longer horizon and updated as new events
+occur. The goal is to enable the agent to respond dynamically to delays, maintenance needs,
+and resource constraints by adapting plans on the fly. This will involve extending the
+simulation environment, modifying the agent’s architecture, and building a multi-step training
+and evaluation pipeline that links multiple planning windows. Each planning window should
+initialize from the previous final state, allowing continuity and also performance
+measurement.\\
+In parallel, the thesis will explore the integration of Explainable AI (XAI) techniques to
+improve the transparency and interpretability of the agent’s decisions. This may include
+policy inspection tools, visualizations of action choices, and analysis of how disruptions
+influence rescheduling behavior. The aim is to make DRL-based decisions easier to
+understand and trust for the operational planners at Green Cargo, who are the intended end-
+users of the decision support system.\\
+The thesis work will start with a short review phase where the student becomes familiar with
+deep reinforcement learning and the existing codebase. The development phase will focus on
+implementing rolling planning logic, injecting disturbances into the simulation, and adding
+explainability components. The final phase will evaluate the planning quality, adaptability,
+and interpretability of the agent across different operational scenarios, including a
+comparison with simple rule-based baselines.
+
+\section{Research Question}
+The project investigates how deep reinforcement learning can be extended from a purely sequential decision-making setup to a rolling horizon planning framework for locomotive rescheduling. The central research question is:
+\begin{quote}\emph{RQ T.1: How can a rolling horizon deep reinforcement learning approach improve adaptability and planning quality in locomotive rescheduling under disruptions, compared to a purely sequential allocation strategy?}\end{quote}
+In addition, the project explores a secondary question related to interpretability:
+\begin{quote}\emph{RQ T.2: How can explainable AI techniques be integrated into a deep reinforcement learning-based planning system to improve transparency and understanding of rescheduling decisions for human planners?}\end{quote}
+
+
+\section{Hypothesis}
+It is hypothesized that extending the existing deep reinforcement learning solution to a rolling planning framework will improve the system’s ability to handle delays, maintenance events, and other operational disturbances by enabling decisions that account for future consequences over a longer planning horizon.\\
+Furthermore, it is expected that the integration of explainable AI techniques will increase the transparency and interpretability of the agent’s decisions, making the resulting decision support system easier to understand and trust for operational planners, without significantly degrading planning performance.
+\section{Background Student}
+This project aligns well with my academic background and professional profile, as it allows me to build upon my existing knowledge while exploring new methodologies and state-of-the-art technologies for addressing complex problems.
+In particular, I have completed the following courses, which provide relevant theoretical and practical foundations for the proposed project:
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4.2cm}|p{2cm}|p{6.5cm}|p{2cm}|}
+\hline
+\textbf{Course} & \textbf{University} & \textbf{Motivation} & \textbf{Status} \\
+\hline
+Data Science and Database Technology & Politecnico Di Torino & 
+Provided strong foundations in data management, data preprocessing, and structured data modeling, which are essential for handling large-scale operational data, train schedules, and locomotive state information in the simulation environment. & Passed \\
+\hline
+Machine Learning Advanced Course & KTH & 
+Developed advanced understanding of learning algorithms, model evaluation, and optimization techniques, directly supporting the design, training, and evaluation of reinforcement learning agents for decision support systems. & Passed \\
+\hline
+Artificial Neural Networks and Deep Architectures & KTH & 
+Built in-depth knowledge of deep learning architectures and training dynamics, which is crucial for implementing and modifying deep reinforcement learning models used for locomotive allocation and rolling planning. & Passed \\
+\hline
+Big Data Processing and Analytics & Politecnico Di Torino & 
+Provided experience with large-scale data processing and analytical pipelines, relevant for analyzing simulation outputs, performance metrics, and scenario-based evaluations of planning strategies. & Passed \\
+\hline
+Machine Learning and Pattern Recognition & Politecnico Di Torino & 
+Introduced core concepts in pattern recognition and statistical learning, supporting the modeling of operational patterns, delay propagation, and decision-making behavior in complex rail freight environments. & Passed \\
+\hline
+\end{tabular}
+\end{table}
+No additional courses remain to be completed during or after the thesis period. The entire study time will therefore be dedicated to the successful completion of the degree project.\\
+I therefore confirm that I fulfill the eligibility requirements to start the degree project according to the program regulations.
+
+\section{Research Method}
+The project will follow a simulation-based experimental research methodology. An existing locomotive planning simulation environment will be extended to support rolling horizon planning, where multiple consecutive planning windows are linked through state continuity.\\
+The deep reinforcement learning agent will be modified to operate within this rolling framework, including changes to the agent architecture, state representation, and training pipeline. Operational disturbances such as delays and maintenance events will be injected into the simulation to evaluate adaptability and robustness.\\
+The proposed approach will be evaluated through systematic experiments across multiple scenarios and compared against the existing sequential DRL solution and simple rule-based baselines. Performance will be assessed using quantitative metrics such as planning feasibility, resource utilization, delay propagation, and recovery behavior. Explainability methods, including policy inspection and visualization of decision processes, will be applied to analyze and interpret the agent’s behavior
+
+\section{Contacts for degree projects at companies}
+I have already contacted the following individuals, who have agreed to support and supervise my master’s thesis work.
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{6cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{Role} & \textbf{Full Name} & \textbf{Email} \\
+\hline
+Supervisor at the company &  Zohreh Ranjbar &  zohreh.ranjbar@ri.se \\
+\hline
+Suggested examiner at KTH & György Dán  & gyuri@kth.se  \\
+\hline
+Suggested supervisor at KTH & Kiarash Kazari &  kkazari@kth.se \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Resources}
+The host institution provides a strong foundation of technical and domain-specific resources that this thesis project will build upon. In particular, an existing simulation-based environment for locomotive planning is available, which models train schedules, locomotive states, maintenance rules, and simplified operational constraints. This environment already includes an initial deep reinforcement learning (DRL) implementation for sequential locomotive allocation and serves as the starting point for further development.\\
+In addition, the company offers access to prior project results, documentation, and source code related to railway operations planning and decision support systems. Domain expertise from researchers and engineers with experience in rail freight operations, optimization, and applied artificial intelligence is available to support the project, ensuring realistic modeling assumptions and meaningful evaluation of results.
+
+\end{document}
