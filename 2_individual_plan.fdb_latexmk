@@ -1,11 +1,13 @@
 # Fdb version 4
-["pdflatex"] 1768388332.28189 "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/proposal.tex" "proposal.pdf" "proposal" 1768388333.0766 0
-  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/proposal.tex" 1768388332.00866 10201 8360f608d0a510a952ba755f1a8edf82 ""
+["pdflatex"] 1777279100.61049 "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/2_individual_plan.tex" "2_individual_plan.pdf" "2_individual_plan" 1777279101.2163 0
+  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/2_individual_plan.tex" 1777279099.60927 11407 8b8f4ba0737589c23679108cf9066e3e ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
+  "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1246382020 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1246382020 928 2dc8d444221b7a635bb58038579b861a ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
+  "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1246382020 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
@@ -69,10 +71,10 @@
   "/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1763742207 79187 04b17f8738f833a5a5f7867124477b59 ""
   "/usr/local/texlive/2025basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1763742197 2663840 338e425676be632da9968b6f25084700 ""
   "/usr/local/texlive/2025basic/texmf.cnf" 1741448314 628 81d1ada0f601fb1ffa62f1323192d946 ""
-  "proposal.aux" 1768388333.03341 812 df46b88ef3ad143f083b82bd8cbcbaec "pdflatex"
-  "proposal.tex" 1768388332.00866 10201 8360f608d0a510a952ba755f1a8edf82 ""
+  "2_individual_plan.aux" 1777279101.18506 954 a436cdeeef4c5584fbc5bfe2ec2b553b "pdflatex"
+  "2_individual_plan.tex" 1777279099.60927 11407 8b8f4ba0737589c23679108cf9066e3e ""
   (generated)
-  "proposal.aux"
-  "proposal.log"
-  "proposal.pdf"
+  "2_individual_plan.aux"
+  "2_individual_plan.log"
+  "2_individual_plan.pdf"
   (rewritten before read)

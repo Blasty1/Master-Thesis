@@ -1,0 +1,184 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{float}
+
+
+
+\newcommand{\elbo}{\mathcal{L}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\p}{\mathbb{P}}
+
+
+
+\title{Individual Plan}
+\subtitle{DA239X}
+\author{
+Bruno Carchia \\
+\texttt{carchia@kth.se}
+}
+
+\begin{document}
+\maketitle
+
+\section{Project Information}
+\noindent \textbf{Preliminary Title: }Rolling Horizon Planning with Explainability for DRL-Based Engine Rescheduling \\
+\noindent \textbf{Contacts:}
+
+\vspace{-2em} % Reduces space above the table
+
+\begin{center}
+    \small % Optional: slightly smaller text often looks better in thesis tables
+    \begin{tabular}{|p{5.5cm}|p{3.5cm}|p{4.5cm}|}
+    \hline
+    \textbf{Role} & \textbf{Full Name} & \textbf{Email} \\
+    \hline
+    Supervisor at the company &  Zohreh Ranjbar &  zohreh.ranjbar@ri.se \\
+    \hline
+    Suggested examiner at KTH & György Dán  & gyuri@kth.se  \\
+    \hline
+    Suggested supervisor at KTH & Kiarash Kazari &  kkazari@kth.se \\
+    \hline
+    \end{tabular}
+\end{center}
+
+
+\noindent \textbf{Keywords:} Deep Reinforcement Learning, Explainable AI, Engine Rescheduling, PPO, Rolling Horizon Planning, Locomotive Assignment, Condition-Based Maintenance , Continuous Hazard Model , Shared-Weight Neural Networks , XAI
+\section{Background \& Objective}
+This thesis project is part of an applied research project at RISE focusing on AI-based
+decision support for locomotive rescheduling in rail freight operations. Efficient engine
+allocation is a complex task, constrained by operational factors such as maintenance
+schedules, workshop availability, and unplanned disruptions.\\
+Locomotives are a central and limited resource for freight train operators, where operational
+flexibility and dynamic rescheduling capabilities are critical. The project is carried out in
+collaboration with Green Cargo, Sweden’s largest rail freight operator. Every day, Green
+Cargo faces the challenge of maintaining and updating locomotive rotations, while also
+coordinating with other resources such as wagons, and driver availability. Beyond improving
+operational efficiency, the company aims to enhance communication with customers during
+delays and better transfer operational expertise within the organization. Currently, there is a
+lack of advanced decision support tools for short-term planning in the rail sector since
+improved planning could directly address the industry’s key challenges: flexibility, efficiency,
+and reliability.\\
+In this thesis, i will work with a simulation-based environment that models engine
+planning problem. The environment includes train schedules, locomotive states, maintenance
+rules, and simplified operational constraints. The existing setup uses deep reinforcement
+learning (DRL) to allocate locomotives sequentially, without explicitly considering future
+consequences.\\
+The primary objective of the thesis is to evolve this setup into a rolling planning framework,
+where decisions are made continuously across a longer horizon and updated as new events
+occur. The goal is to enable the agent to respond dynamically to delays, maintenance needs,
+and resource constraints by adapting plans on the fly. This will involve extending the
+simulation environment, modifying the agent’s architecture, and building a multi-step training
+and evaluation pipeline that links multiple planning windows. Each planning window should
+initialize from the previous final state, allowing continuity and also performance
+measurement.\\
+In parallel, the thesis will explore the integration of Explainable AI (XAI) techniques to
+improve the transparency and interpretability of the agent’s decisions. This may include
+policy inspection tools, visualizations of action choices, and analysis of how disruptions
+influence rescheduling behavior. The aim is to make DRL-based decisions easier to
+understand and trust for the operational planners at Green Cargo, who are the intended end-
+users of the decision support system.\\
+The thesis work will start with a short review phase where the student becomes familiar with
+deep reinforcement learning and the existing codebase. The development phase will focus on
+implementing rolling planning logic, injecting disturbances into the simulation, and adding
+explainability components. The final phase will evaluate the planning quality, adaptability,
+and interpretability of the agent across different operational scenarios, including a
+comparison with simple rule-based baselines.
+\section{Research Question \& Method}
+\subsection{Research Questions}
+The project investigates how deep reinforcement learning can be extended from a purely sequential decision-making setup to a rolling horizon planning framework for locomotive rescheduling. The central research question is:
+\begin{quote}\emph{RQ T.1: How can a rolling horizon deep reinforcement learning approach improve adaptability and planning quality in locomotive rescheduling under disruptions, compared to a purely sequential allocation strategy?}\end{quote}
+In addition, the project explores a secondary question related to interpretability:
+\begin{quote}\emph{RQ T.2: How can explainable AI techniques be integrated into a deep reinforcement learning-based planning system to improve transparency and understanding of rescheduling decisions for human planners?}\end{quote}
+\subsection{Detailed Tasks}
+Me and my industrial supervisor identified a set of tasks that summarize what i should do for this project:
+\begin{enumerate}
+    \item \textbf{Simulation Environment Optimization:} Transition from a discrete step-based simulation to an event-driven architecture. The goal is to isolate meaningful decision points, reduce computational noise, and improve overall training efficiency.
+    
+    \item \textbf{Literature Review and Algorithm Selection:} Study state-of-the-art Reinforcement Learning approaches, with a specific focus on Proximal Policy Optimization (PPO) for handling continuous and complex action spaces in logistics.
+    
+    \item \textbf{Development of Core Model (V1):}
+    \begin{enumerate}
+        \item Design the initial neural network architecture to process locomotive and station data.
+        \item Implement and stabilize the PPO training loop.
+        \item Develop a primary reward function focused on reducing system lateness and improving operational success rates.
+    \end{enumerate}
+    
+    \item \textbf{Testing and Hyperparameter Tuning (V1):}
+    \begin{enumerate}
+        \item Execute sensitivity analyses by varying key hyperparameters (learning rate, entropy, and discount factors).
+        \item Establish baseline performance metrics to evaluate the agent's ability to match standard greedy heuristics.
+    \end{enumerate}
+    
+    \item \textbf{Incorporating Environmental Stochasticity (V2):}
+    \begin{enumerate}
+        \item Introduce random asset failures (breaks) during episodes to simulate real-world uncertainty.
+        \item Enhance the observation space to allow the agent to detect and react to unexpected locomotive unavailability.
+    \end{enumerate}
+    
+    \item \textbf{Integration of Autonomous Maintenance (V3):}
+    \begin{enumerate}
+        \item Expand the agent's action space to include proactive maintenance decisions
+        \item Transition from hard-coded maintenance thresholds to an autonomous policy where the agent balances duty cycles with service requirements.
+    \end{enumerate}
+    
+    \item \textbf{Comparative Performance Evaluation:}
+    \begin{enumerate}
+        \item Conduct stress tests of the final model under varying levels of failure intensity.
+        \item Perform a comparative analysis of the agent's performance in deterministic versus stochastic scenarios to quantify its robustness.
+    \end{enumerate}
+    
+    \item \textbf{Explainability and Decision Support:}
+    \begin{enumerate}
+        \item Develop visualization tools and diagnostic charts to improve the interpretability of the agent's decisions.
+        \item Align the model output with industry-standard reporting formats to facilitate stakeholder communication.
+    \end{enumerate}
+\end{enumerate}
+\section{Evaluation}
+
+The evaluation strategy is designed to measure the efficacy of the Deep Reinforcement Learning (DRL) agent across successive development stages. \textbf{Model V1} is defined as the core research objective and the minimum expected contribution of this thesis. While the project scope allows for the exploration of more complex behaviors, the stable implementation of V1 represents the primary requirement for a successful research outcome.
+
+To ensure a controlled and rigorous testing environment, the agent will be evaluated exclusively using \textbf{synthetically generated datasets}. These datasets will simulate realistic railway schedules and operational constraints. By focusing on synthetic data rather than an industrial phase, the project can prioritize the robustness of the algorithm and the interpretability of the results across a wide variety of generated scenarios.
+
+The model's performance will be quantified through Key Performance Indicators (KPIs) developed in alignment with industrial interests. \textbf{Lateness} serves as the primary metric, though additional secondary parameters will be identified during the study to refine the agent's decision-making logic. A critical component of the evaluation is the comparison against a \textbf{greedy baseline heuristic}. This benchmarking process is necessary to determine the relative advantage of the learned policy over standard rule-based strategies.
+
+The developing project phase effort is divided into two main areas: approximately 50\% is dedicated to \textbf{architectural design}, including the simulation environment and neural network construction, while the remaining 50\% is allocated to \textbf{experimental optimization}, focusing on finding the parameter sets and reward structures required to outperform the baseline.
+\section{Conditions \& Schedule}
+The primary technical challenges of this research are concentrated in the foundational study of Deep Reinforcement Learning and the development phases of \textbf{Model V1} and \textbf{Model V3}. While \textbf{Model V1} requires the establishment of a robust initial architecture and \textbf{Model V3} introduces complex autonomous decision-making logic for maintenance, \textbf{Model V2} is anticipated to be a comparatively less intensive stage, focused primarily on the integration of stochastic elements into the existing framework.\\
+This is the scheduling proposed:
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{9cm}|p{4cm}|}
+\hline
+\textbf{Phase} & \textbf{Duration} \\
+\hline
+Simulation Environment Optimization & January \\
+\hline
+Literature Review and Algorithm Selection &  January-February \\
+\hline
+Development of Core Model (V1) & February-March  \\
+\hline
+Testing and Hyperparameter Tuning (V1) & February-March \\
+\hline
+Incorporating Environmental Stochasticity (V2) & March \\
+\hline
+Integration of Autonomous Maintenance (V3) & April \\
+\hline
+Comparative Performance Evaluation &  April \\
+\hline
+Explainability and Decision Support &  February-April \\
+\hline
+Writing of the report &  May-June \\
+\hline
+Thesis Defence & Mid-June \\
+\hline
+\end{tabular}
+\caption{Proposed Project Schedule}
+\end{table}
+
+
+\end{document}

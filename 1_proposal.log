@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  14 JAN 2026 11:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  27 APR 2026 09:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/brunobryan/Desktop/Programmazione/Master-Thesis/proposal.tex
-(/Users/brunobryan/Desktop/Programmazione/Master-Thesis/proposal.tex
+**/Users/brunobryan/Desktop/Programmazione/Master-Thesis/1_proposal.tex
+(/Users/brunobryan/Desktop/Programmazione/Master-Thesis/1_proposal.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/koma-script/scrartcl.cls
@@ -255,8 +255,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count292
 \l__pdf_internal_box=\box60
-) (./proposal.aux)
-\openout1 = `proposal.aux'.
+) (./1_proposal.aux)
+\openout1 = `1_proposal.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
@@ -392,7 +392,7 @@ Overfull \hbox (16.08301pt too wide) in paragraph at lines 117--128
 
 
 
-[4] (./proposal.aux)
+[4] (./1_proposal.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -400,14 +400,14 @@ L3 programming layer <2025-01-18>
  ) 
 Here is how much of TeX's memory you used:
  7021 strings out of 474662
- 133868 string characters out of 5751108
- 674772 words of memory out of 5000000
+ 133892 string characters out of 5751108
+ 674776 words of memory out of 5000000
  30016 multiletter control sequences out of 15000+600000
  568388 words of font info for 73 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 108i,12n,107p,10958b,288s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,12n,107p,10960b,288s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on proposal.pdf (4 pages, 94761 bytes).
+Output written on 1_proposal.pdf (4 pages, 94714 bytes).
 PDF statistics:
  47 PDF objects out of 1000 (max. 8388607)
  28 compressed objects within 1 object stream
