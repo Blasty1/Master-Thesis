@@ -1,0 +1,40 @@
+@article{YANG2025104976,
+title = {An advanced learning environment and a scalable deep reinforcement learning approach for rolling stock circulation on urban rail transit line},
+journal = {Transportation Research Part C: Emerging Technologies},
+volume = {171},
+pages = {104976},
+year = {2025},
+issn = {0968-090X},
+doi = {https://doi.org/10.1016/j.trc.2024.104976},
+url = {https://www.sciencedirect.com/science/article/pii/S0968090X24004972},
+author = {Yuhua Yang and Haoyang Huo and Nikola Bešinović and Yichen Sun and Shaoquan Ni},
+keywords = {Rolling stock circulation, Deep reinforcement learning, Meta-heuristics, Urban rail transit},
+abstract = {Rolling stock circulation is the process of assigning rolling stocks to a set of predetermined train trips with fixed departure and arrival times. This paper considers mathematical models, solving approaches, and numerical experiments for hypothesized and real-world cases of rolling stock circulation, in which two end-point depots of an urban rail transit line are involved. The objective aims to minimize the total number of rolling stocks in utilization, to balance the workload of the utilized rolling stocks, and to balance the numbers of rolling stocks available at each depot at the beginning and the end of the planning horizon. To achieve the goals, a multi-commodity flow model and a deep reinforcement learning framework for the rolling stock circulation problem are proposed, accommodating the use of multiple types of rolling stocks, of which the former is a non-linear integer programming model. The multi-commodity flow model is solved by the CP Optimizer embedded in ILOG CPLEX and a custom-developed Ant Colony Optimization algorithm, serving as the exact and heuristic benchmarks respectively. The rolling stock circulation problem is innovatively modeled as a Markov decision process within the deep reinforcement learning framework, incorporating an advanced learning environment. This environment is designed by embedding state definition, constraint detection, and reward assignment, enabling effective interaction with the agent. A proximal policy optimization algorithm with a proximal policy update mechanism and adaptive policy-learning rates is adopted to solve the proposed problem. Numerical experiments on hypothesized and real-world cases illustrate the effectiveness of the proposed deep reinforcement learning method for rolling stock circulation. Compared to the benchmark approach, deep reinforcement learning can improve the solution quality with the problem scale increasing, which proves the adaptiveness to applications with complex environments and large state spaces and shows the strong potential to generalize across problems with different scales.}
+}
+
+
+@article{ZHAO2026111784,
+title = {A deep reinforcement learning approach for integrated optimization of train scheduling and rolling stock circulation planning},
+journal = {Computers \& Industrial Engineering},
+volume = {213},
+pages = {111784},
+year = {2026},
+issn = {0360-8352},
+doi = {https://doi.org/10.1016/j.cie.2025.111784},
+url = {https://www.sciencedirect.com/science/article/pii/S0360835225009301},
+author = {Xiaoli Zhao and Dewei Li and Xinyu Bao},
+keywords = {Train timetabling, Deep reinforcement learning, Rolling stock circulation, Hybrid proximal policy optimization},
+abstract = {This study proposes a deep reinforcement learning-based optimization framework for integrated train scheduling and rolling stock circulation planning under dynamic passenger demand. The problem is formulated as a Markov decision process (MDP) with a hybrid action space that simultaneously captures continuous timetable decisions and discrete rolling stock allocations. The objective is to minimize passenger waiting time and operator costs while adhering to complex operational constraints. To address the challenge of simultaneously coordinating continuous and discrete decision variables in a high-dimensional operational context, we adopt a Hybrid Proximal Policy Optimization (HPPO) algorithm, incorporating separate actor networks for discrete and continuous actions, and employing constraint-handling techniques such as action masking and action space embedding. Furthermore, a potential-based reward shaping function is introduced to enhance learning efficiency by addressing issues of sparse and delayed rewards. The proposed approach is validated on the Beijing Metro Changping Line. Experimental results demonstrate that the HPPO algorithm effectively improves system efficiency and policy robustness.}
+}
+
+@article{SU2026,
+title = {Solving high-speed rolling stock planning with an improved LSTM-PPO reinforcement learning algorithm},
+journal = {Transportmetrica A Transport Science},
+year = {2026},
+issn = {2324-9935},
+doi = {https://doi.org/10.1080/23249935.2026.2653703},
+url = {https://www.sciencedirect.com/science/article/pii/S2324993526000369},
+author = {Xiangyu Su and Yixiang Yue and Bin Guo and Zanyang Cui and Boyan Li},
+keywords = {Rolling stock planning problem, deep reinforcement learning, LSTM-PPO, simulated annealing algorithm},
+abstract = {Rolling stock planning (RSP) is a key component of railway operations, directly affecting transport efficiency and operating cost. To address the high-dimensional decision space, strong temporal dependencies and multiple operational constraints in RSP, this paper proposes a hybrid optimisation approach combining deep reinforcement learning (DRL) with heuristic search. The problem is formulated as a Markov decision process (MDP), where states describe remaining train services, circulation status and depot resources, and actions represent train assignment and circulation construction. A long short-term memory (LSTM)-enhanced proximal policy optimisation (PPO) algorithm is developed to capture temporal dependencies, improve exploration and stabilise convergence. In addition, simulated annealing (SA) is introduced as a local search module to refine policy-generated solutions and help escape local optima. Experiments on real-world instances from the China high-speed rail network show that the proposed method outperforms conventional DRL methods and a commercial solver in rolling stock usage and computational efficiency.}
+}

@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{SU2026}
+Xiangyu Su, Yixiang Yue, Bin Guo, Zanyang Cui, and Boyan Li.
+\newblock Solving high-speed rolling stock planning with an improved lstm-ppo reinforcement learning algorithm.
+\newblock {\em Transportmetrica A Transport Science}, 2026.
+
+\bibitem{YANG2025104976}
+Yuhua Yang, Haoyang Huo, Nikola Bešinović, Yichen Sun, and Shaoquan Ni.
+\newblock An advanced learning environment and a scalable deep reinforcement learning approach for rolling stock circulation on urban rail transit line.
+\newblock {\em Transportation Research Part C: Emerging Technologies}, 171:104976, 2025.
+
+\bibitem{ZHAO2026111784}
+Xiaoli Zhao, Dewei Li, and Xinyu Bao.
+\newblock A deep reinforcement learning approach for integrated optimization of train scheduling and rolling stock circulation planning.
+\newblock {\em Computers \& Industrial Engineering}, 213:111784, 2026.
+
+\end{thebibliography}
