@@ -38,3 +38,66 @@ author = {Xiangyu Su and Yixiang Yue and Bin Guo and Zanyang Cui and Boyan Li},
 keywords = {Rolling stock planning problem, deep reinforcement learning, LSTM-PPO, simulated annealing algorithm},
 abstract = {Rolling stock planning (RSP) is a key component of railway operations, directly affecting transport efficiency and operating cost. To address the high-dimensional decision space, strong temporal dependencies and multiple operational constraints in RSP, this paper proposes a hybrid optimisation approach combining deep reinforcement learning (DRL) with heuristic search. The problem is formulated as a Markov decision process (MDP), where states describe remaining train services, circulation status and depot resources, and actions represent train assignment and circulation construction. A long short-term memory (LSTM)-enhanced proximal policy optimisation (PPO) algorithm is developed to capture temporal dependencies, improve exploration and stabilise convergence. In addition, simulated annealing (SA) is introduced as a local search module to refine policy-generated solutions and help escape local optima. Experiments on real-world instances from the China high-speed rail network show that the proposed method outperforms conventional DRL methods and a commercial solver in rolling stock usage and computational efficiency.}
 }
+@article{Bröchin2023,
+author = {Bröchin, Manuel and Ramseier, Reto and Schüpbach, Kaspar},
+year = {2023},
+month = {04},
+pages = {},
+title = {Rolling Stock Planning with Maintenance Constraints by a Rolling Horizon approach},
+url = {https://www.researchgate.net/publication/391914974_Rolling_Stock_Planning_with_Maintenance_Constraints_by_a_Rolling_Horizon_approach},
+}
+
+@article{HABIBI2026114351,
+title = {Dynamic wagon assignment and reassignment for pick-up and delivery requests: A deep reinforcement learning framework to address uncertainty in locomotive availability},
+journal = {Applied Soft Computing},
+volume = {187},
+pages = {114351},
+year = {2026},
+issn = {1568-4946},
+doi = {https://doi.org/10.1016/j.asoc.2025.114351},
+url = {https://www.sciencedirect.com/science/article/pii/S1568494625016643},
+author = {Parivash Habibi and Mohammad Tamannaei and Hamid Zarei},
+keywords = {Deep reinforcement learning, Actor-Critic algorithm, Railway freight transportation, Pick-up and delivery, Fleet assignment},
+abstract = {We investigate the dynamic assignment of freight wagons within a railway transportation network under uncertainty in locomotive availability. Enhancing railway fleet efficiency depends on minimizing the movement of empty wagons and reducing delays in freight delivery. Therefore, a dynamic multi-period planning model is developed to prioritize pick-up and delivery requests and to assign and reassign wagons for freight transportation over a specific planning horizon, given a limited number of railway fleet. The model accounts for real-world operational constraints and uncertainty, to ensure fulfillment of delivery commitments and reduce delays and operational costs. To address uncertainty in the model, a learning-based methodology is proposed aiming to enhance the railway fleet efficiency. To solve the model in a discrete environment, we propose a Deep Reinforcement Learning (DRL) framework, based on two algorithms, i.e. the Actor-Critic and Proximal Policy Optimization(PPO), which is integrated by heuristic assignment and reassignment rules. The framework combines the advantages of real-time response with adaptability of the neural networks. In order to validate the effectiveness of the proposed DRL framework, the results are compared with two benchmark methods: a dynamic Simulated Annealing algorithm and the Eisenhower decision matrix. The comparisons demonstrate the superior performance of the proposed DRL framework in terms of cumulative reward for the railway operator as the decision maker. Furthermore, four performance metrics are developed to provide a comprehensive evaluation for service quality and operational efficiency. It is also deduced that although the model formulation is customized within a railway transportation mode, the proposed framework is inherently general and transferable across other transportation modes.}
+}
+
+@techreport{DfT2014,
+author      = {{Department for Transport (DfT)}},
+title       = {TAG Unit 3.5.6 Values of Time and Vehicle Operating Costs, Transport analysis guidance data book},
+institution = {Department for Transport, United Kingdom},
+year        = {2014},
+type        = {Technical Report}
+}
+
+@article{Chow2018,
+  author  = {Chow, A. H. F. and Pavlides, A.},
+  title   = {Cost functions and multi-objective timetabling of mixed train services},
+  journal = {Transportation Research Part A},
+  volume  = {113},
+  pages   = {335--356},
+  year    = {2018},
+  doi     = {10.1016/j.tra.2018.04.027}
+}
+
+@article{YING2020210,
+title = {An actor-critic deep reinforcement learning approach for metro train scheduling with rolling stock circulation under stochastic demand},
+journal = {Transportation Research Part B: Methodological},
+volume = {140},
+pages = {210-235},
+year = {2020},
+issn = {0191-2615},
+doi = {https://doi.org/10.1016/j.trb.2020.08.005},
+url = {https://www.sciencedirect.com/science/article/pii/S0191261520303829},
+author = {Cheng-shuo Ying and Andy H.F. Chow and Kwai-Sang Chin},
+keywords = {Metro train scheduling, Stochastic transit demand, Actor-critic architecture, Deep reinforcement learning, Multi-objective optimization},
+abstract = {This paper presents a novel actor-critic deep reinforcement learning approach for metro train scheduling with circulation of limited rolling stock. The scheduling problem is modeled as a Markov decision process driven by stochastic passenger demand. As in most dynamic optimization problems, the complexity of the scheduling process grows exponentially with the amount of states, decisions, and uncertainties involved. This study aims to address this ‘curses of dimensionality’ issue by adopting an actor-critic deep reinforcement learning solution framework. The framework simplifies the evaluation and searching process for potential optimal solutions by parameterizing the original state and decision spaces with the use of artificial neural networks. A deep deterministic policy gradient algorithm is developed for training the artificial neural networks via simulated system transitions before the actor-critic agent can be applied for online schedule control. The proposed approach is tested with a real-world scenario configured with data collected from the Victoria Line of London Underground, UK. Experiment results illustrate the advantages of the proposed method over a range of established meta-heuristics in terms of computing time, system efficiency, and robustness under different stochastic environments. This study innovates urban transit operations with state-of-the-art computer science and dynamic optimization techniques.}
+}
+
+@book{Goodfellow2016,
+  author    = {Goodfellow, Ian and Bengio, Yoshua and Courville, Aaron},
+  title     = {Deep Learning},
+  publisher = {MIT Press},
+  address   = {Cambridge, MA},
+  year      = {2016},
+  url       = {https://www.deeplearningbook.org}
+}

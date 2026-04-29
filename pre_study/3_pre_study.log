@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  28 APR 2026 12:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  29 APR 2026 16:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -473,14 +473,14 @@ Overfull \hbox (16.08301pt too wide) in paragraph at lines 70--80
 [2 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ActorCriticNetworkArchitecture.png>]
 
 [3]
-Overfull \hbox (4.45581pt too wide) in paragraph at lines 109--110
+Overfull \hbox (4.45581pt too wide) in paragraph at lines 108--109
 []\OT1/cmr/m/it/10.95 Usage Costs\OT1/cmr/m/n/10.95 : Pro-por-tional to the to-tal num-ber of ac-tive rolling stock units $[][] \OML/cmm/m/it/10.95 ^^Q[]$\OT1/cmr/m/n/10.95 . 
  []
 
 <../images/pre_study/2ActorCriticNetworkArchitecture.png, id=49, 841.1425pt x 554.07pt>
 File: ../images/pre_study/2ActorCriticNetworkArchitecture.png Graphic file (type png)
 <use ../images/pre_study/2ActorCriticNetworkArchitecture.png>
-Package pdftex.def Info: ../images/pre_study/2ActorCriticNetworkArchitecture.png  used on input line 116.
+Package pdftex.def Info: ../images/pre_study/2ActorCriticNetworkArchitecture.png  used on input line 115.
 (pdftex.def)             Requested size: 418.25555pt x 275.51253pt.
 
 
@@ -490,15 +490,47 @@ Package pdftex.def Info: ../images/pre_study/2ActorCriticNetworkArchitecture.png
 <../images/pre_study/LSTM-PPO-Algorithm.png, id=78, 526.96875pt x 658.46pt>
 File: ../images/pre_study/LSTM-PPO-Algorithm.png Graphic file (type png)
 <use ../images/pre_study/LSTM-PPO-Algorithm.png>
-Package pdftex.def Info: ../images/pre_study/LSTM-PPO-Algorithm.png  used on input line 158.
+Package pdftex.def Info: ../images/pre_study/LSTM-PPO-Algorithm.png  used on input line 155.
 (pdftex.def)             Requested size: 418.25555pt x 522.64934pt.
 
 
 [6]
 
-[7 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/LSTM-PPO-Algorithm.png>] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl)
+[7 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/LSTM-PPO-Algorithm.png>]
+<../images/pre_study/ActivityAndMaintenanceHorizon.png, id=95, 502.87875pt x 277.035pt>
+File: ../images/pre_study/ActivityAndMaintenanceHorizon.png Graphic file (type png)
+<use ../images/pre_study/ActivityAndMaintenanceHorizon.png>
+Package pdftex.def Info: ../images/pre_study/ActivityAndMaintenanceHorizon.png  used on input line 168.
+(pdftex.def)             Requested size: 418.25555pt x 230.41666pt.
 
-[8] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux)
+
+[8 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ActivityAndMaintenanceHorizon.png>]
+
+[9]
+<../images/pre_study/HeuristicRules.png, id=117, 619.31375pt x 511.9125pt>
+File: ../images/pre_study/HeuristicRules.png Graphic file (type png)
+<use ../images/pre_study/HeuristicRules.png>
+Package pdftex.def Info: ../images/pre_study/HeuristicRules.png  used on input line 213.
+(pdftex.def)             Requested size: 418.25555pt x 345.73692pt.
+
+
+[10]
+
+[11 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/HeuristicRules.png>]
+
+[12]
+<../images/pre_study/ReviewOfResults.png, id=149, 460.72125pt x 335.2525pt>
+File: ../images/pre_study/ReviewOfResults.png Graphic file (type png)
+<use ../images/pre_study/ReviewOfResults.png>
+Package pdftex.def Info: ../images/pre_study/ReviewOfResults.png  used on input line 271.
+(pdftex.def)             Requested size: 418.25555pt x 304.34872pt.
+
+
+[13]
+
+[14 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ReviewOfResults.png>] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl)
+
+[15] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -507,18 +539,18 @@ Package rerunfilecheck Info: File `3_pre_study.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 14414 strings out of 474662
- 250652 string characters out of 5751108
+ 14478 strings out of 474662
+ 252177 string characters out of 5751108
  804788 words of memory out of 5000000
- 37264 multiletter control sequences out of 15000+600000
+ 37299 multiletter control sequences out of 15000+600000
  568729 words of font info for 74 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  108i,11n,107p,10971b,530s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </Users/brunobryan/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf (8 pages, 596794 bytes).
+ </Users/brunobryan/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf (15 pages, 927666 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 275 PDF objects out of 1000 (max. 8388607)
+ 208 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 87 words of extra memory for PDF output out of 10000 (max. 10000000)
 

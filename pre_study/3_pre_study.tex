@@ -80,7 +80,6 @@ This paper provides the foundational logic for my research, particularly in the 
     \caption{Comparative analysis between the reference study and the proposed DRL approach.}
     \label{tab:methodology_comparison}
 \end{table}
-
 \section{Deep Reinforcement Learning for Integrated Train Scheduling and Rolling Stock Circulation}
 
 A significant contribution to integrated rail optimization is presented by Zhao et al. \cite{ZHAO2026111784}, who propose a Deep Reinforcement Learning (DRL) approach to solve the joint problem of train scheduling and rolling stock circulation. The authors utilize a Hybrid Proximal Policy Optimization (HPPO) algorithm to manage a hybrid action space characterized by both continuous scheduling decisions and discrete rolling stock assignments. The primary objective is to minimize a multi-objective cost function comprising passenger waiting time and operational expenses under complex constraints.
@@ -121,8 +120,6 @@ To handle the hybrid nature of the actions, the architecture employs a dual-acto
 While the study by Zhao et al \cite{ZHAO2026111784}. addresses a more geographically complex passenger network, it provides a vital methodological benchmark for this thesis. Both approaches utilize action masking to enforce operational constraints; however, several key distinctions exist. While Zhao et al. \cite{ZHAO2026111784}  optimize for passenger flows using a hybrid HPPO actor-critic model, this thesis focuses on freight logistics ( specifically the transport of timber—within a two-line system ). 
 
 Furthermore, instead of the dual-actor hybrid approach (HPPO) used in the cited study, this research employs a standard PPO algorithm with a single continuous actor. In this thesis, discrete requirements are handled by mapping continuous outputs to discrete values via a specialized mapping strategy, rather than maintaining a separate discrete actor network.
-
-
 \section{Solving high-speed rolling stock planning with an improved LSTM-PPO reinforcement learning algorithm}
 The work presented by Su et al. \cite{SU2026} investigates the Rolling Stock Planning (RSP) problem utilizing a PPO framework integrated with a Long Short-Term Memory (LSTM) network. To prevent the agent from converging on local optima, the authors incorporate a simulated annealing strategy, effectively balancing global exploration with local refinement. The choice of an LSTM architecture is specifically intended to capture temporal dependencies and provide the agent with a recursive memory of the episode's history. 
 
@@ -149,16 +146,133 @@ The reward function is a multi-objective scalar derived from three primary compo
     \item $r_t^\text{penalty}$: A penalty term for the violation of hard constraints, primarily regarding fixed maintenance intervals.
 \end{enumerate}
 
-\textbf{Relevance and Comparative Analysis} \\
+\textbf{Technical Contribution and Relevance to Thesis} \\
 The problem addressed by Su et al. \cite{SU2026} serves as a foundational benchmark for this thesis, although it represents a slightly simplified version of the real-world system as it focuses exclusively on RSU efficiency without considering passenger demand. 
 
-There is a significant alignment between this thesis and Su et al. \cite{SU2026} regarding the prioritization of system safety; both models enforce maintenance requirements as a higher priority than schedule adherence. However, the maintenance modeling differs in flexibility: while  Su et al. \cite{SU2026} restricts maintenance to nighttime windows, this thesis allows the agent to execute early maintenance at any time to accommodate operational needs. Furthermore, while the present work omits dwell times as a deliberate simplification, this feature remains a viable candidate for future integration. Finally, although this thesis utilizes a Multi-Layer Perceptron (MLP) architecture rather than the LSTM employed by Su et al. \cite{SU2026}, the algorithmic structure of their work provided significant inspiration for the development of our proposed solution.
+There is a significant alignment between this thesis and Su et al. \cite{SU2026} regarding the prioritization of system safety; both models enforce maintenance requirements as a higher priority than schedule adherence. However, the maintenance modeling differs in flexibility: while  Su et al. \cite{SU2026} restricts maintenance to nighttime windows, this thesis allows the agent to execute early maintenance at any time to accommodate operational needs. Furthermore, while the present work omits dwell times as a deliberate simplification, this feature remains a viable candidate for future integration. Finally, although this thesis utilizes a Multi-Layer Perceptron (MLP) architecture rather than the LSTM employed by Su et al. \cite{SU2026}, the algorithmic structure of their work provided significant inspiration for the development of my proposed solution.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../images/pre_study/LSTM-PPO-Algorithm.png}
     \caption{PPO-LSTM Algorithm. Taken from (SU et al., 2026 \cite{SU2026}) }
     \label{fig:LSTM-PPO-Algorithm}
 \end{figure}
+\section{Rolling Stock Planning with Integrated Maintenance Constraints: A Rolling Horizon MILP Approach}
+
+The work by Bröchin et al. \cite{Bröchin2023} presents a robust optimization framework for rolling stock circulation that explicitly integrates multi-tier maintenance requirements. Unlike traditional "maintenance-first" approaches, which often decouple service scheduling from technical service, this study utilizes a Mixed-Integer Linear Programming (MILP) model within a rolling horizon framework to optimize short-term operational efficiency alongside long-term fleet reliability.
+
+\textbf{Operational Complexity and Horizon Segmentation} \\
+The model accounts for high-fidelity operational constraints, including specific maintenance categories (T001, ESA, and DLR) and workshop availability fluctuations due to holidays or capacity limits. A central feature of the methodology is the temporal segmentation of the decision-making window into two distinct phases: the Activity Horizon and the Maintenance Horizon, as illustrated in Figure \ref{fig:ActivityAndMaintenanceHorizon}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../images/pre_study/ActivityAndMaintenanceHorizon.png}
+    \caption{Temporal decomposition of the rolling horizon approach, distinguishing between detailed activity scheduling and expected maintenance requirements. Taken from Bröchin et al. (2023) \cite{Bröchin2023}.}
+    \label{fig:ActivityAndMaintenanceHorizon}
+\end{figure}
+
+By solving the MILP model at each step of the rolling horizon, the system performs a trade-off analysis between immediate revenue-generating activities and the expected future costs of maintenance neglect or suboptimal scheduling.
+
+\textbf{Multi-Layered Graph Architecture} \\
+The formulation utilizes a "layered flow" network architecture, which is critical for maintaining computational tractability. The graph is decomposed into:
+\begin{itemize}
+    \item \textbf{Activity Flow Layer:} A directed graph $G_A = (V_A, A_A)$ where nodes represent service trips or maintenance slots, and arcs represent feasible transitions (turnarounds, repositioning, and coupling).
+    \item \textbf{Maintenance Flow Layers:} Specialized layers for each maintenance type $t \in T$ that track the elapsed time/distance since the last service event, ensuring safety limits are not exceeded.
+\end{itemize}
+
+\textbf{Objective Function} \\
+The optimization goal is to minimize a composite cost function representing both operational and technical expenditures:
+\begin{equation}
+    \min \sum_{a \in A_A} c_a x_a + \sum_{t \in T} \sum_{a \in A_t} d_{a,t} w_{a,t}
+\end{equation}
+This function penalizes deadheading (empty runs) and minimizes deviations from the original plan, effectively balancing economic performance with schedule stability.
+
+\textbf{Technical Contribution and Relevance to Thesis} \\
+The research by Bröchin et al. \cite{Bröchin2023} is highly relevant as it demonstrates the necessity of integrating maintenance into the primary circulation plan to avoid "Maintenance Spikes." However, a significant limitation of their MILP-based approach is its computational latency, which makes it less suitable for the real-time, event-driven rescheduling required in dynamic freight environments. 
+The papers is trying to resolve the following problem,: the assignment and reassignment of wagons to transport freight from origins to destinations within a railway network where there multiple stations and types of wagons.
+In contrast to their layered network flow, this thesis proposes an Actor-Critic DRL architecture. While Bröchin et al. \cite{Bröchin2023} manage complexity through "commoditization" of flow, my approach utilizes a Shared-Weight MLP to achieve the same fleet-wide scalability without the need for solving expensive linear programs at every decision point. This allows for near-instantaneous rescheduling when stochastic events ( such as the Weibull-distributed failures modeled in my work ) occur.
+\section{Dynamic wagon assignment and reassignment for pick-up and delivery requests: A deep reinforcement learning framework to address uncertainty in locomotive availability}
+The research conducted by Habibi et al. (2026) \cite{HABIBI2026114351} addresses the complexities of railway logistics through the application of Deep Reinforcement Learning (DRL), specifically utilizing the Proximal Policy Optimization (PPO) algorithm. The primary objective of their framework is the maximization of operational efficiency by ensuring the fulfillment of delivery requests while simultaneously minimizing logistical costs and temporal delays.
+
+\textbf{State Space Representation} \\
+The agent observes a discrete environment where the state $s_t$ at any given time $t$ is defined as:
+$$
+s_t = ( B v_{t,m}^K , y a_{t,w,i})
+$$
+This representation captures two critical components: 
+\begin{itemize}
+    \item The current inventory levels of freight across all pending requests.
+    \item The distribution and availability of specific wagon types across the network's stations.
+\end{itemize}
+This state space design mirrors the requirements of complex railway environments, providing the necessary visibility into resource allocation and demand fulfillment.
+
+\textbf{Action Space Representation} \\
+A recurring challenge in railway scheduling—as observed in the model developed for this thesis—is the lack of scalability when the number of stations or assets increases. To mitigate the "curse of dimensionality" inherent in large-scale discrete action spaces, Habibi et al. introduce a set of twelve heuristic rules \ref{fig:heuristicrules}. These rules act as an abstraction layer for the agent, constraining the action space to high-level wagon assignment and re-assignment decisions. This approach contrasts with the raw weight-based selection mechanism utilized in my model, where the agent directly outputs weights for locomotive selection. While my model currently grants the agent greater freedom, the heuristic approach suggests a viable pathway for reducing complexity in future iterations of the project.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../images/pre_study/HeuristicRules.png}
+    \caption{Heuristic rules for wagon assignment or re-assignment. Taken from Habibi et al. (2026) \cite{HABIBI2026114351}.}
+    \label{fig:heuristicrules}
+\end{figure}
+
+\textbf{Reward Mechanism} \\
+The reward function is formulated to align the agent's behavior with corporate profitability. It is composed of four distinct weighted components:
+\begin{enumerate}
+    \item Positive reinforcement for revenue generated from fulfilled freight deliveries.
+    \item Penalties associated with delivery delays (lateness).
+    \item Operational costs associated with the transportation of fully loaded wagons.
+    \item Variable costs incurred by the movement of empty wagons (positioning costs).
+\end{enumerate}
+
+\textbf{Neural Network Architecture} \\
+The actor-critic framework employs three fully connected hidden layers, each consisting of 256 neurons. Rectified Linear Unit (ReLU) functions are utilized for non-linear activation. The optimization process is conducted via the Adam optimizer, utilizing a learning rate of 0.002 and a discount factor ($\gamma$) of 0.9. These parameters served as the baseline configuration for my model before empirical fine-tuning was performed to adapt to the specific requirements of locomotive selection.
+
+\textbf{Technical Contribution and Thesis Relevance} \\
+The work by Habibi et al. served as a foundational benchmark for this research. While my model focuses on a multi-locomotive selection environment built with the Gymnasium framework, the architectural parallels in the PPO implementation provided a robust starting point for determining network size and hyperparameters. 
+
+Critically, however, the Habibi model assumes a deterministic environment. A significant gap identified during this review is the absence of modeling for stochastic failures or external uncertainty—events that are ubiquitous in real-world railway operations. While my model improves upon the user-interface and visual action-tracking, the next phase of this thesis aims to integrate the heuristic-based dimensionality reduction seen in Habibi's work while introducing environmental uncertainty to better simulate the "real-world" drift between planned schedules and execution.
+\section{An actor-critic deep reinforcement learning approach for metro train scheduling with rolling stock circulation under stochastic demand}
+The study by Ying et al. \cite{YING2020210} investigates an actor-critic Deep Reinforcement Learning (DRL) framework for metro train scheduling, with a specific focus on the rotation of a constrained fleet of rolling stock units. The system is modeled as a closed-loop network of stations $\mathbb{I} = \{1, 2, \dots, I\}$, where $I_0$ represents the depot for train dispatching. The objective is to assign a fixed fleet of $K$ trains to $N$ service runs over a predefined horizon, ensuring efficient circulation under capacity constraints.
+
+\textbf{State Space Representation} \\
+The state tuple $s_n$ at each stage $n$ encapsulates the observed environment for the agent:
+\begin{equation}
+s_n = (\tau_{n,i}, \sigma_{n,i}, l_{n,i})
+\end{equation}
+where $\tau_{n,i}$ and $\sigma_{n,i}$ denote the arrival and departure times of service $n$ at station $i$, respectively. The term $l_{n,i}$ represents the passenger accumulation remaining at station $i$ following the departure of service $n$. While structurally similar to the work of Zhao et al. \cite{ZHAO2026111784}, this formulation places greater emphasis on the specific requirements of rolling stock planning.
+
+\textbf{Action Space Representation} \\
+The action vector $x_n$ determined at stage $n$ for the subsequent service $n+1$ is defined as:
+\begin{equation}
+x_n = (h_{n+1}, u_{n+1,i}, w_{n+1,i})
+\end{equation}
+where $h_{n+1}$ is the headway between service $n$ and $n+1$ at the dispatching point, $u_{n+1,i}$ is the section running time between station pairs $(i, i+1)$, and $w_{n+1,i}$ denotes the station dwell times. These parameters are subject to bound-clipping to maintain operational feasibility. A critical assumption in this model is that the fleet size $K$ is smaller than the total service requirements, thereby necessitating an effective circulation and reuse strategy.
+
+\textbf{Reward Mechanism} \\
+The reward function is a weighted multi-objective scalar derived from two perspectives:
+\begin{enumerate}
+    \item Passenger Utility: A cost function $c_n^W = \zeta^W \sum_{i=1}^I c_{n,i}^W$ quantifies the waiting time for passengers. The factor $\zeta^W$ serves to monetize total waiting time based on established economic standards \cite{DfT2014, Chow2018}.
+    \item Operator Efficiency:  The operational cost $c_n^V$ accounts for energy consumption and maintenance-related expenditures:
+    \begin{equation}
+    c_n^V = \sum_{i=1}^{I} \left( \zeta^F F(v_{n,i}) d_{i,i+1} + \zeta^T u_{n,i} + \zeta^D d_{i,i+1} \right)
+    \end{equation}
+    where $F(v_{n,i})$ represents energy consumption as a function of speed, and $\zeta^F, \zeta^T, \zeta^D$ are unit cost factors for fuel, time-related expenditures, and distance-related wear, respectively.
+\end{enumerate}
+
+\textbf{Neural Network Architecture} \\
+To mitigate the curse of dimensionality, the authors implement the Deep Deterministic Policy Gradient (DDPG) algorithm. The architecture employs two-layer artificial neural networks for both the actor and the critic, utilizing non-linear activation functions and the Adam optimizer \cite{Goodfellow2016}. A linear mapping function $f$ is used to scale the bounded action space $[-1, 1]$ to real-world operational values.
+
+\textbf{Technical Contribution and Thesis Relevance} \\
+This paper serves as a primary reference for the implementation of action-value clipping and linear mapping within this thesis. Furthermore, the inclusion of multi-faceted maintenance costs in the reward function provided a methodological foundation for our model, despite our simplified parameter set. 
+
+Most significantly, Ying et al. highlight the inherent difficulty of achieving convergence in environments characterized by stochasticity and random failure events. This aligns with the findings of the present research: while the system demonstrates high operational performance, the training curves exhibit the characteristic volatility (as seen in Figure \ref{fig:ReviewOfResults}) common in high-uncertainty DRL applications. This research confirms that while reducing stochastic variables leads to smoother convergence, it results in a less robust model capable only of finding trivial solutions.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{../images/pre_study/ReviewOfResults.png}
+\caption{Test of the actor-critic agent during the training process.Taken from (Ying et al., 2020 \cite{YING2020210}) }
+\label{fig:ReviewOfResults}
+\end{figure}
+
 % --- BIBLIOGRAPHY ---
 \newpage
 \bibliographystyle{plain} % This defines the style

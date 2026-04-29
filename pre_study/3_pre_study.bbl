@@ -1,5 +1,35 @@
 \begin{thebibliography}{1}
 
+\bibitem{Bröchin2023}
+Manuel Bröchin, Reto Ramseier, and Kaspar Schüpbach.
+\newblock Rolling stock planning with maintenance constraints by a rolling horizon approach.
+\newblock 04 2023.
+
+\bibitem{Chow2018}
+A.~H.~F. Chow and A.~Pavlides.
+\newblock Cost functions and multi-objective timetabling of mixed train services.
+\newblock {\em Transportation Research Part A}, 113:335--356, 2018.
+
+\bibitem{DfT2014}
+{Department for Transport (DfT)}.
+\newblock Tag unit 3.5.6 values of time and vehicle operating costs, transport analysis guidance data book.
+\newblock Technical report, Department for Transport, United Kingdom, 2014.
+
+\bibitem{Goodfellow2016}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock {\em Deep Learning}.
+\newblock MIT Press, Cambridge, MA, 2016.
+
+\bibitem{HABIBI2026114351}
+Parivash Habibi, Mohammad Tamannaei, and Hamid Zarei.
+\newblock Dynamic wagon assignment and reassignment for pick-up and delivery requests: A deep reinforcement learning framework to address uncertainty in locomotive availability.
+\newblock {\em Applied Soft Computing}, 187:114351, 2026.
+
+\bibitem{YING2020210}
+Cheng shuo Ying, Andy~H.F. Chow, and Kwai-Sang Chin.
+\newblock An actor-critic deep reinforcement learning approach for metro train scheduling with rolling stock circulation under stochastic demand.
+\newblock {\em Transportation Research Part B: Methodological}, 140:210--235, 2020.
+
 \bibitem{SU2026}
 Xiangyu Su, Yixiang Yue, Bin Guo, Zanyang Cui, and Boyan Li.
 \newblock Solving high-speed rolling stock planning with an improved lstm-ppo reinforcement learning algorithm.
