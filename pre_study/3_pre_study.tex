@@ -24,14 +24,344 @@ Bruno Carchia \\
 
 \begin{document}
 \maketitle
-\section{Introduction}
-This section provides a critical analysis of the literature and technical reports that informed the selection of the methodologies and technologies employed in this research. Each reviewed paper contributed specifically to the architectural design or the strategic formulation of the Reinforcement Learning agent. To ensure clarity, each work is presented using the following structure:
+\section*{Introduction}
+This section provides a critical analysis of the literature and technical reports that informed the selection of the methodologies and technologies employed in this research. Each reviewed paper contributed specifically to the architectural design or the strategic formulation of the Reinforcement Learning agent. To ensure clarity, each paper is presented using the following structure:
 
 \begin{itemize}
     \item \textbf{Core Summary:} A brief overview of the research objectives and findings of the paper.
     \item \textbf{Technical Contribution:} An explanation of how the paper's insights directly influenced the development of this thesis.
 \end{itemize}
 
+\section{Fundamentals of Reinforcement Learning}
+
+Reinforcement Learning (RL) is a distinct machine learning paradigm characterized by several foundational principles:
+\begin{enumerate}
+    \item \textbf{Evaluative Feedback:} Unlike supervised learning, there is no external supervisor providing labeled data. The system relies entirely on a reward signal, which indicates the quality of an action (good or bad) without providing the absolute optimal target.
+    \item \textbf{Delayed Consequences:} Feedback is rarely instantaneous; actions taken at the current time step may have profound effects on rewards received many steps in the future.
+    \item \textbf{Sequential Decision-Making:} Time is a critical variable. RL deals with sequential states and actions where data points are highly correlated, fundamentally breaking the independent and identically distributed (i.i.d.) assumption common in classical machine learning.
+    \item \textbf{Agent-Environment Interaction:} An active agent continuously moves through and interacts with a dynamic environment.
+    \item \textbf{Active Sampling:} The agent's actions directly influence the subsequent data it observes, creating a continuous feedback loop between behavior and data generation.
+\end{enumerate}
+
+A standard reinforcement learning system is defined by the following core components:
+\begin{enumerate}
+    \item \textbf{State ($S_t$):} A mathematical function of the history $H_t$ (a sequence of sequential observations, actions, and rewards, defined as $H_t = O_1, R_1, A_1, \dots, A_{t-1}, O_t, R_t$) used to determine subsequent dynamics. States can be categorized into three types:
+    \begin{enumerate}
+        \item \textit{Environment State ($S_t^e$):} The internal representation used by the environment to dictate state transitions and emissions.
+        \item \textit{Agent State ($S_t^a$):} The internal representation utilized by the agent to summarize historical data and inform future action selection.
+        \item \textit{Information/Markov State ($S_t^M$):} A formal mathematical property indicating that the state sufficiently retains all necessary historical information. A state is Markovian \cite{BasharinLangvilleNaumov2004} if the future is conditionally independent of the past, given the present: $\mathbb{P}[S_{t+1} \mid S_t] = \mathbb{P}[S_{t+1} \mid S_1, \dots, S_t]$.
+    \end{enumerate}
+    \item \textbf{Action ($A_t$):} The behavioral output executed by the agent.
+    \item \textbf{Reward ($R_t$):} A scalar feedback signal indicating the immediate utility of the agent's behavior at time step $t$. The primary objective of the agent is to maximize the cumulative sum of these expected rewards over time.
+    \item \textbf{Policy ($\pi$):} The agent's behavioral mapping from states to actions, formulated as $\pi(a|s) = \mathbb{P}[A_t = a \mid S_t = s]$. In a stochastic environment, this defines a probability distribution over the action space.
+    \item \textbf{Value Function ($v(s)$):} A prediction of future cumulative rewards, estimating the long-term desirability of being in a particular state or taking a specific action: $v(s) = \mathbb{E}[G_t \mid S_t = s]$, where $G_t$ represents the expected return.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png}
+\caption{Agent-Environment Interaction in a Reinforcement Learning System. Taken from Jiang et al., 2019 \cite{ImageReferenceForRLSystemStructure}.}
+\label{fig:Agent-environment-interaction-in-Markov-decision-process}
+\end{figure}
+
+The nature of the environment dictates the agent's observation capabilities. An environment is \textit{fully observable} if the agent can directly observe the complete environment state ($S_t^a = S_t^e$), formally modeled as a Markov Decision Process (MDP). Conversely, if the agent only has access to a limited view of the state ($S_t^a \neq S_t^e$), the system is modeled as a Partially Observable Markov Decision Process (POMDP).
+
+Furthermore, RL agents are fundamentally categorized by their algorithmic approach:
+\begin{enumerate}
+    \item \textbf{Value-Based:} The agent approximates the value function, while the policy is implicitly derived (e.g., via an $\epsilon$-greedy strategy).
+    \item \textbf{Policy-Based:} The agent explicitly parameterizes and optimizes the policy $\pi$ without maintaining a separate value function.
+    \item \textbf{Actor-Critic:} A hybrid architecture utilizing both functions: the \textit{actor} updates the policy, while the \textit{critic} evaluates the policy by estimating the value function.
+\end{enumerate}
+
+\subsection{Markov Decision Process (MDP)}
+A Markov process constitutes a memoryless stochastic sequence of random states $S_1, S_2, \dots$ that strictly adheres to the Markov Property \cite{BasharinLangvilleNaumov2004}. An MDP extends this by introducing actions and rewards, formalized as the tuple $\langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma \rangle$:
+\begin{itemize}
+    \item $\mathcal{S}$: A finite set of states.
+    \item $\mathcal{A}$: A finite set of actions.
+    \item $\mathcal{P}$: The state transition probability matrix, where $\mathcal{P}_{ss'}^a = \mathbb{P}[S_{t+1} = s' \mid S_t = s, A_t = a]$.
+    \item $\mathcal{R}$: The expected reward function, defined as $\mathcal{R}_s^a = \mathbb{E}[R_{t+1} \mid S_t = s, A_t = a]$.
+    \item $\gamma \in [0, 1]$: The discount factor, quantifying the present value of future rewards.
+\end{itemize}
+The fundamental goal in an MDP is to maximize the expected return $G_t$, defined as the total discounted cumulative reward:
+\begin{equation}
+G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}
+\end{equation}
+
+\subsection{Bellman Expectation Equations}
+Value functions can be systematically decomposed into two constituent parts: the immediate expected reward and the discounted expected value of the successor state. 
+\begin{enumerate}
+    \item \textbf{State-Value Function ($v_\pi(s)$):} Evaluates the expected return starting in state $s$ and strictly following policy $\pi$.
+    \begin{equation}
+    \begin{aligned}
+    v_\pi(s) &= \mathbb{E}_\pi [G_t \mid S_t = s] \\
+    &= \mathbb{E}_\pi [R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots \mid S_t = s] \\
+    &= \mathbb{E}_\pi [R_{t+1} + \gamma (R_{t+2} + \gamma R_{t+3} + \dots) \mid S_t = s] \\
+    &= \mathbb{E}_\pi [R_{t+1} + \gamma G_{t+1} \mid S_t = s] \\
+    &= \mathbb{E}_\pi [R_{t+1} + \gamma v_\pi(S_{t+1}) \mid S_t = s]
+    \end{aligned}
+    \end{equation}
+    By marginalizing over discrete actions, this function connects to the action-value function: $v_\pi(s) = \sum_{a \in \mathcal{A}} \pi(a \mid s) q_\pi(s,a)$.
+
+    \item \textbf{Action-Value Function ($q_\pi(s,a)$):} Evaluates the expected return of taking action $a$ in state $s$, and subsequently following policy $\pi$.
+    \begin{equation}
+    q_\pi(s,a) = \mathbb{E}_\pi[R_{t+1} + \gamma q_\pi(S_{t+1}, A_{t+1}) \mid S_t=s, A_t=a]
+    \end{equation}
+    Similarly, this can be expressed by averaging over the environmental dynamics: $q_\pi(s,a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a v_\pi(s')$.
+\end{enumerate}
+
+By substituting these relationships, we derive the recursive \textbf{Bellman Expectation Equations}:
+\begin{equation}
+v_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a \mid s) \left( \mathcal{R}_{s}^{a} + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^{a} v_{\pi}(s') \right)
+\end{equation}
+\begin{equation}
+q_{\pi}(s, a) = \mathcal{R}_{s}^{a} + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^{a} \sum_{a' \in \mathcal{A}} \pi(a' \mid s') q_{\pi}(s', a')
+\end{equation}
+
+\subsection{Bellman Optimality Equations}
+The primary objective of RL is to identify the optimal policy $\pi_*$, defined as the policy that yields the maximum possible state-value function $v_{\pi_*}(s) = \max_\pi v_\pi(s)$ and action-value function $q_{\pi_*}(s,a) = \max_\pi q_\pi(s,a)$ across all states. According to established theory \cite{SuttonBarto2018}, there always exists at least one optimal deterministic policy $\pi_* \geq \pi, \, \forall \pi$.
+
+This principle leads to the \textbf{Bellman Optimality Equations}:
+\begin{itemize}
+    \item For the optimal state-value function $v_*(s)$: The value of a state under the optimal policy must equal the expected return for the best available action. It requires a one-step look-ahead, maximizing over the action space and averaging over the stochastic transition dynamics determined by the environment.
+    \begin{equation}
+    v_*(s) = \max_{a} \left[ \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a v_*(s') \right]
+    \end{equation}
+    
+    \item For the optimal action-value function $q_*(s,a)$: The value of taking an action relies on the immediate reward plus the discounted expected value of the best possible action in the subsequent state.
+    \begin{equation}
+    q_*(s,a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \max_{a'} q_*(s',a')
+    \end{equation}
+\end{itemize}
+Due to the inherent non-linearity of the $\max$ operator, Bellman optimality equations generally lack a closed-form solution. Consequently, they necessitate iterative algorithmic solvers such as Value Iteration, Policy Iteration, Q-Learning, and SARSA.
+
+\subsection{Policy Gradient Methods}
+In contrast to value-based methods, which derive behavior implicitly from value estimates, policy gradient methods directly parameterize and optimize the policy itself. By representing the policy as a parameterized probability distribution, $\pi_\theta(a|s) = \mathbb{P}[a \mid s; \theta]$, the agent selects actions conditioned on both the current state and the parameter vector $\theta$.
+
+This direct parameterization offers several fundamental \textbf{advantages}:
+\begin{itemize}
+    \item \textit{Enhanced Convergence Properties:} The policy update follows the gradient smoothly, reducing the oscillatory behavior often seen in value-based approximations.
+    \item \textit{Continuous and High-Dimensional Action Spaces:} It naturally accommodates continuous action spaces without the computational bottleneck of calculating a global maximum over actions (as required by the $\max$ operator in Q-learning).
+    \item \textit{Stochastic Policies:} It allows the agent to learn and maintain stochastic policies, which is essential in environments with imperfect information or non-stationary dynamics.
+\end{itemize} 
+Conversely, policy gradient approaches possess notable \textbf{disadvantages}:
+\begin{itemize}
+    \item \textit{Local Optima:} Gradient ascent guarantees convergence to a local optimum, which may not correspond to the global optimum.
+    \item \textit{High Variance:} Evaluating a policy natively via trajectory sampling is typically highly inefficient and suffers from significant variance, which can destabilize learning.
+\end{itemize}
+
+To optimize the parameters $\theta$, an objective function $J(\theta)$ must be defined to quantitatively evaluate the quality of the policy. The formulation of $J(\theta)$ depends fundamentally on the nature of the environment:
+\begin{itemize}
+    \item \textbf{Start Value (Episodic Environments):} For environments with a defined starting state $s_1$, the objective is the expected long-term return from that initial state:
+    \begin{equation}
+    J_1(\theta) = V^{\pi_\theta}(s_1) = \mathbb{E}_{\pi_\theta}[v_1]
+    \end{equation}
+    This metric asks: "If the episode begins at $s_1$ and strictly follows $\pi_\theta$, what is the total expected reward?"
+    
+    \item \textbf{Average Value (Continuing Environments):} In non-episodic environments lacking a distinct start state, the objective evaluates the expected value of all states, weighted by the stationary distribution $d^{\pi_\theta}(s)$ of the Markov chain induced by $\pi_\theta$:
+    \begin{equation}
+    J_{avV}(\theta) = \sum_s d^{\pi_\theta}(s) V^{\pi_\theta}(s)
+    \end{equation}
+    
+    \item \textbf{Average Reward per Time-Step (Continuing Environments):} Alternatively, the objective can be framed as the expected immediate reward per time-step under the stationary distribution:
+    \begin{equation}
+    J_{avR}(\theta) = \sum_s d^{\pi_\theta}(s) \sum_a \pi_\theta(a|s) \mathcal{R}^a_s
+    \end{equation}
+    Here, $d^{\pi_\theta}(s)$ acts as a generalized probability distribution over the state space as time approaches infinity.
+\end{itemize}
+
+Remarkably, the gradient of the objective function takes the same underlying form regardless of which specific $J(\theta)$ is utilized.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{../images/pre_study/PolicyGradientAlgorithms.png}
+\caption{The foundational architecture of Policy Gradient Algorithms, illustrating equivalent mathematical forms across different objective functions.}
+\label{fig:PolicyGradientAlgorithms}
+\end{figure}
+
+\subsubsection*{Policy Gradient Algorithms}
+The core mechanism of these algorithms relies on the Policy Gradient Theorem, which states that if the policy $\pi_\theta$ is differentiable, the parameters can be updated via stochastic gradient ascent. The general form of the gradient is:
+\begin{equation}
+\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}[\nabla_\theta \log \pi_\theta(a|s) Q^{\pi_\theta}(s,a)]
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Monte Carlo Policy Gradient (REINFORCE):}
+    To approximate the expected return without requiring a complete model of the environment dynamics, the REINFORCE algorithm relies on empirical returns $v_t$ sampled from full trajectories as an unbiased estimate of the true action-value function $Q^{\pi_\theta}(s_t,a_t)$. 
+    \begin{equation}
+    \Delta \theta_t = \alpha \nabla_\theta \log \pi_\theta (a_t|s_t) v_t
+    \end{equation}
+    The gradient term $\nabla_\theta \log \pi_\theta (a_t|s_t)$, known as the score function, effectively steers the parameter updates to increase the probability of actions associated with higher empirical returns. However, the reliance on full Monte Carlo rollouts renders this approach computationally slow and introduces substantial variance, potentially destabilizing the learning process \cite{SuttonBarto2018}.
+
+    \item \textbf{Actor-Critic Policy Gradient:}
+    To alleviate the high variance inherent to Monte Carlo sampling, Actor-Critic architectures introduce a parameterized value function, termed the \textit{Critic} ($Q_w(s,a) \approx Q^{\pi_\theta}(s,a)$), to explicitly estimate the expected return. This substitution yields the approximate policy gradient:
+    \begin{equation}
+    \nabla_\theta J(\theta) \approx \mathbb{E}_{\pi_\theta}[\nabla_\theta \log \pi_\theta(a|s) Q_w(s,a)]
+    \end{equation}
+    This architecture fundamentally comprises two interacting components:
+    \begin{itemize}
+        \item The \textbf{Critic}, which updates its parameters $w$ to accurately evaluate current state-action pairs by minimizing the temporal-difference error.
+        \item The \textbf{Actor}, which updates the policy parameters $\theta$ in the direction of the gradient formulated by the Critic's evaluations.
+    \end{itemize}
+
+    \textbf{Action-Value Actor-Critic with Baseline:}
+    In a standard formulation utilizing linear value function approximation ($Q_w(s,a) = \phi(s,a)^T w$), the iterative updates are defined as follows:
+    \begin{align}
+    \delta &= r + \gamma Q_w(s', a') - Q_w(s, a) && \quad \text{(TD Error)} \\
+    \theta &\leftarrow \theta + \alpha \nabla_\theta \log \pi_\theta(a|s) Q_w(s, a) && \quad \text{(Actor Update)} \\
+    w &\leftarrow w + \beta \delta \phi(s, a) && \quad \text{(Critic Update)}
+    \end{align}
+    
+    To further reduce the variance of the gradient estimator without introducing bias (i.e., without altering the expectation of the gradient), an arbitrary state-dependent baseline function $B(s)$ can be subtracted from the value estimate. This subtraction preserves the expected gradient because the expectation of the baseline term rigorously evaluates to zero:
+    \begin{equation}
+    \begin{aligned}
+    \mathbb{E}_{\pi_\theta} [\nabla_\theta \log \pi_\theta(a \mid s) B(s)] &= \sum_{s \in \mathcal{S}} d^{\pi_\theta}(s) \sum_{a \in \mathcal{A}} \nabla_\theta \pi_\theta(a \mid s) B(s) \\
+    &= \sum_{s \in \mathcal{S}} d^{\pi_\theta}(s) B(s) \nabla_\theta \left( \sum_{a \in \mathcal{A}} \pi_\theta(a \mid s) \right) \\
+    &= 0
+    \end{aligned}
+    \end{equation}
+    The final equality holds because the sum over all action probabilities in a given state must equal 1 ($\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s) = 1$), and the gradient of a constant is mathematically zero. 
+    
+    The theoretically optimal choice for this baseline is the state-value function $V^{\pi_\theta}(s)$, which quantifies the average expected performance starting from state $s$. Subtracting this baseline from the action-value function yields the \textbf{Advantage Function} $A^{\pi_\theta}(s,a)$:
+    \begin{equation}
+    A^{\pi_\theta}(s,a) = Q^{\pi_\theta}(s,a) - V^{\pi_\theta}(s)
+    \end{equation}
+    
+    By substituting the Advantage function into the objective, the modified policy gradient becomes:
+    \begin{equation}
+    \nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}[\nabla_\theta \log \pi_\theta(a|s) A^{\pi_\theta}(s,a)]
+    \end{equation}
+    This formulation profoundly stabilizes the learning trajectory. Instead of updating parameters based on the absolute magnitude of the expected return ($Q$), the gradient is scaled by the relative advantage ($A$). That is, how much better the chosen action performed compared to the average expected baseline for that state. This centering mechanism mitigates noise and yields significantly more efficient convergence.
+\end{itemize}
+\subsection{Advantage Actor-Critic (A2C)}
+The Advantage Actor-Critic (A2C) algorithm is a synchronous, deterministic variant of the Asynchronous Advantage Actor-Critic (A3C) method. It operates by coordinating parallel environment data collection and executing batch updates. By simulating $N$ parallel environments simultaneously and updating the policy based on the aggregated batch, A2C stabilizes the training process; rather than updating parameters based on a single, high-variance trajectory, the gradient is averaged across $N$ diverse trajectories.
+
+A fundamental distinction between A2C and traditional Q-Learning Actor-Critic architectures is that A2C does not directly approximate the action-value function $Q(s,a)$. Instead, it relies on empirical returns collected from the environments to compute the advantage function. This reliance on grounded trajectory data , rather than initially biased action-value approximator ,contributes significantly to the improved stability of A2C \cite{DBLP:journals/corr/MnihKSGAW13}.
+
+\textbf{Algorithm Overview:}
+\begin{enumerate}
+    \item Initialize network parameters $\theta$ with random weights.
+    \item Execute $N$ steps across parallel environments using the current policy $\pi_\theta$, storing the transition tuples $(s_t, a_t, r_t)$.
+    \item Initialize the return $G_t$: set $G_t = 0$ if a terminal state is reached; otherwise, bootstrap the value estimate $G_t = V_\theta(s_t)$.
+    \item For $i = t-1$ down to $t_{\text{start}}$ (iterating backward for computational efficiency):
+    \begin{enumerate}
+        \item Accumulate the discounted return: $G_t \leftarrow r_i + \gamma G_t$.
+        \item Compute the Advantage function, defined as the difference between the empirical return and the baseline expected return estimated by the critic: $A(s_i, a_i) = G_t - V_\theta(s_i)$.
+        \item Accumulate the policy gradients (Actor update):
+        $$
+        \Delta \theta_\pi = \Delta \theta_\pi + \nabla_{\theta_\pi} \log \pi_{\theta_\pi}(a_i \mid s_i) \left( G_t - V_\theta(s_i) \right)
+        $$
+        \item Accumulate the value gradients (Critic update) by minimizing the Mean Squared Error (MSE):
+        $$
+        \Delta \theta_v = \Delta \theta_v + \nabla_{\theta_v} \left( G_t - V_{\theta_v}(s_i) \right)^2
+        $$
+    \end{enumerate}
+    \item Update the neural network parameters in the direction of the accumulated gradients using an optimization algorithm (e.g., Adam).
+    \item Repeat from step 2 until convergence.
+\end{enumerate}
+In practice, the A2C loss function is often augmented with an entropy regularization term. This term quantifies the uncertainty of the agent's policy, penalizing premature convergence to deterministic behavior. Higher entropy promotes exploration by encouraging the agent to sample diverse actions, whereas lower entropy signifies exploitation of known optimal actions.
+
+\subsection{Trust Region Policy Optimization (TRPO)}
+Schulman et al. \cite{DBLP:conf/icml/SchulmanLAPM15} introduced Trust Region Policy Optimization (TRPO), an algorithm designed to ensure monotonic policy improvement. The problem is formalized as a Markov Decision Process (MDP) defined by the tuple $\langle \mathcal{S}, \mathcal{A}, \mathcal{P}, r, \rho_0, \gamma \rangle$, where $\mathcal{S}$ is a finite state space, $\mathcal{A}$ is a finite action space, $\mathcal{P}$ represents the transition probability dynamics, $r$ is the reward function, $\rho_0$ is the initial state distribution, and $\gamma \in (0,1)$ is the discount factor.
+
+For a stochastic policy $\pi : \mathcal{S} \times \mathcal{A} \rightarrow [0,1]$, the expected discounted return $\eta(\pi)$ is defined as:
+\begin{equation}
+    \eta(\pi) = \mathbb{E}_{s_0, a_0, \dots} \left[ \sum_{t=0}^{\infty} \gamma^t r(s_t) \right]
+\end{equation}
+where $s_0 \sim \rho_0(s_0)$, $a_t \sim \pi(a_t \mid s_t)$, and $s_{t+1} \sim \mathcal{P}(s_{t+1} \mid s_t, a_t)$.
+
+The algorithm utilizes the standard definitions of the action-value function $Q_\pi(s_t, a_t)$, state-value function $V_\pi(s_t)$, and advantage function $A_\pi(s, a)$:
+\begin{equation}
+\begin{aligned}
+    Q_\pi(s_t, a_t) &= \mathbb{E}_{s_{t+1}, a_{t+1}, \dots} \left[ \sum_{l=0}^{\infty} \gamma^l r(s_{t+l}) \right] \\
+    V_\pi(s_t) &= \mathbb{E}_{a_t, s_{t+1}, \dots} \left[ \sum_{l=0}^{\infty} \gamma^l r(s_{t+l}) \right] \\
+    A_\pi(s, a) &= Q_\pi(s, a) - V_\pi(s)
+\end{aligned}
+\end{equation}
+
+Given a current policy $\pi$ and a candidate policy $\tilde{\pi}$, the expected return of $\tilde{\pi}$ can be expressed in terms of the advantage over $\pi$ (as proven in Lemma 1 of \cite{DBLP:conf/icml/SchulmanLAPM15}):
+\begin{equation}
+    \eta(\tilde{\pi}) = \eta(\pi) + \mathbb{E}_{s_0, a_0, \dots \sim \tilde{\pi}} \left[ \sum_{t=0}^{\infty} \gamma^t A_\pi(s_t, a_t) \right]
+\end{equation}
+This formulation allows the evaluation of a new policy based on the baseline performance of the current policy. Introducing the unnormalized discounted visitation distribution $\rho_\pi(s) = \sum_{t=0}^{\infty} \gamma^t \mathbb{P}(s_t = s)$, which quantifies the visitation frequency of state $s$, the expected return can be rewritten as:
+\begin{equation}
+    \eta(\tilde{\pi}) = \eta(\pi) + \sum_{s \in \mathcal{S}} \rho_{\tilde{\pi}}(s) \sum_{a \in \mathcal{A}} \tilde{\pi}(a \mid s) A_\pi(s,a)
+\end{equation}
+
+Standard policy gradient methods suffer from two primary limitations: first, the gradient estimate is only a first-order local approximation; second, standard step sizes can lead to overshooting (resulting in performance collapse) or excessively slow convergence. 
+
+To address this, TRPO enforces a trust region to mathematically guarantee monotonic improvement, ensuring $\eta(\pi_{\theta_{k+1}}) \geq \eta(\pi_{\theta_k})$. The algorithm achieves this by maximizing a surrogate objective function $\mathcal{L}(\theta_k, \theta)$ subject to a strict constraint on the Kullback-Leibler (KL) divergence between the old and new policies:
+\begin{equation}
+\begin{aligned}
+    \theta_{k+1} = \arg \max_{\theta} \ & \mathcal{L}(\theta_k, \theta) \\
+    \text{s.t. } & \bar{D}_{KL}(\theta \parallel \theta_k) \leq \delta
+\end{aligned}
+\end{equation}
+Where the surrogate objective is defined as:
+\begin{equation}
+    \mathcal{L}(\theta_k, \theta) = \mathbb{E}_{s, a \sim \pi_{\theta_k}} \left[ \frac{\pi_\theta(a \mid s)}{\pi_{\theta_k}(a \mid s)} A^{\pi_{\theta_k}}(s, a) \right]
+\end{equation}
+And the average KL-divergence penalty prevents destructively large updates:
+\begin{equation}
+    \bar{D}_{KL}(\theta \parallel \theta_k) = \mathbb{E}_{s \sim \pi_{\theta_k}} \left[ D_{KL} \left( \pi_\theta(\cdot \mid s) \parallel \pi_{\theta_k}(\cdot \mid s) \right) \right]
+\end{equation}
+
+Because solving this constrained optimization problem exactly is intractable for large neural networks, TRPO employs a Taylor expansion to form a linear approximation of the objective and a quadratic approximation of the constraint:
+\begin{equation}
+\begin{aligned}
+    \theta_{k+1} \approx \arg \max_{\theta} \ & g^T (\theta - \theta_k) \\
+    \text{s.t. } & \frac{1}{2} (\theta - \theta_k)^T H (\theta - \theta_k) \leq \delta
+\end{aligned}
+\end{equation}
+Here, $g = \nabla_\theta \mathcal{L}(\theta_k,\theta)|_{\theta=\theta_k}$ is the gradient vector, and $H$ is the Fisher Information Matrix (the Hessian of the average KL-divergence). Using Lagrangian duality \cite[Ch. 2]{BoydVandenberghe2004}, the theoretical update step is derived as:
+\begin{equation}
+    \theta_{k+1} = \theta_k + \alpha^j \sqrt{\frac{2\delta}{g^T H^{-1} g}} H^{-1} g
+\end{equation}
+where $\alpha \in (0,1)$ is a backtracking line-search coefficient. Since computing the inverse Hessian $H^{-1}$ is computationally prohibitive for deep networks, TRPO uses the conjugate gradient algorithm \cite{Shewchuk1994} to efficiently estimate the natural gradient direction $x = H^{-1}g$ via matrix-vector products ($Hx = g$) without explicitly forming $H$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../images/pre_study/TRPO_algorithm.png}
+    \caption{TRPO algorithm pseudocode. Adapted from OpenAI Spinning Up \cite{spinningup2018}.}
+    \label{fig:TRPO_algorithm}
+\end{figure}
+
+\subsection{Proximal Policy Optimization (PPO)}
+To overcome the computational complexity of second-order optimization in TRPO, Schulman et al. \cite{DBLP:journals/corr/SchulmanWDRK17} introduced Proximal Policy Optimization (PPO). PPO retains the reliability and monotonic improvement guarantees of TRPO while significantly simplifying the implementation by utilizing purely first-order optimization techniques.
+
+While the original paper proposes two variants (PPO-Penalty and PPO-Clip), the most widely adopted formulation is PPO-Clip. Rather than imposing a hard KL-divergence constraint, PPO-Clip alters the objective function to mathematically penalize excessive divergence between the updated policy and the old policy.
+
+Let $r_t(\theta)$ denote the probability ratio between the target and behavior policies:
+\begin{equation}
+    r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\text{old}}}(a_t \mid s_t)}
+\end{equation}
+The clipped surrogate objective function is formulated as:
+\begin{equation}
+    \mathcal{L}^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \left( r_t(\theta) \hat{A}_t, \, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right]
+\end{equation}
+By explicitly clipping the probability ratio within the interval $[1-\epsilon, 1+\epsilon]$, the algorithm removes the incentive to move $r_t$ outside of this bound when the advantage is positive, thereby establishing a local "trust region."
+
+To compute the advantage estimates $\hat{A}_t$, PPO commonly integrates Generalized Advantage Estimation (GAE). GAE computes an exponentially weighted average of multi-step temporal-difference errors ($\delta_t = r_t + \gamma V_w(s_{t+1}) - V_w(s_t)$) to strike an optimal balance between bias and variance in the value estimations.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../images/pre_study/PPO_algorithm.png}
+    \caption{PPO algorithm pseudocode. Adapted from OpenAI Spinning Up \cite{spinningup2018}.}
+    \label{fig:PPO_algorithm}
+\end{figure}
+
+\textbf{Advantages of PPO:}
+\begin{itemize}
+    \item \textit{Computational Efficiency:} By relying exclusively on first-order derivatives (gradients), PPO avoids the expensive Fisher Information Matrix computations of TRPO, leading to vastly superior wall-clock training times.
+    \item \textit{Stability and Robustness:} The surrogate clipping mechanism safely restricts step sizes, preventing the catastrophic performance collapse common in standard policy gradients.
+    \item \textit{Versatility:} It is highly scalable and consistently performs well across continuous and discrete action spaces.
+\end{itemize}
+
+\textbf{Limitations of PPO:}
+\begin{itemize}
+    \item \textit{Sample Inefficiency:} As an on-policy algorithm, PPO requires fresh data generated by the current policy for every update phase, rendering it inherently less sample-efficient than off-policy algorithms (e.g., SAC, DQN) which utilize experience replay buffers.
+    \item \textit{Hyperparameter Sensitivity:} Performance is sensitive to specific tuning parameters, particularly the clipping ratio ($\epsilon$), learning rate, and GAE coefficient ($\lambda$).
+    \item \textit{Local Optima Vulnerability:} Because the clipping function only enforces a local trust region, noisy gradient estimates or excessively small batch sizes can still cause the policy to drift into suboptimal local minima.
+\end{itemize}
 
 \section{An advanced learning environment and a scalable deep reinforcement learning approach for rolling stock circulation on urban rail transit line}
 This study \cite{YANG2025104976} addresses the Rolling Stock Circulation (RSC) problem by formulating it as a multi-objective optimization task within a Deep Reinforcement Learning framework. The primary objectives identified are the minimization of fleet utilization, the balancing of maintenance workloads, and the stabilization of depot stock levels. 
@@ -44,7 +374,7 @@ $$
 This vector captures critical operational constraints, including cumulative trip counts ($n_k^t$), remaining service life ($\bar{c}_k^t$), and turnaround readiness ($f_k^t$). Notably, the inclusion of operation direction ($o_k^t$) and a timetable pointer ($g_k^t$) ensures the agent maintains the Markov property by encoding the physical feasibility of future assignments.
 
 \textbf{Action Space} \\
-The action space $A = \{1, 2, \dots, |K|\}$ is discrete, where each action corresponds to the selection of a specific physical asset from the fleet. To handle the "hard constraints" of rail operations (e.g., assigning a busy train), the authors utilize a penalty-based approach rather than strict action masking. This forces the agent to learn the underlying feasibility logic through the negative reinforcement of invalid selections.
+The action space $A = \{1, 2, \dots, |K|\}$ is discrete, where each action corresponds to the selection of a specific physical asset from the fleet. To handle the "hard constraints" of rail operations (e.g., assigning a busy train), the authors utilize a penalty , based approach rather than strict action masking. This forces the agent to learn the underlying feasibility logic through the negative reinforcement of invalid selections.
 
 \textbf{Reward Mechanism} \\
 A dual-reward structure is employed to handle the credit assignment problem:
@@ -273,8 +603,53 @@ Most significantly, Ying et al. highlight the inherent difficulty of achieving c
 \label{fig:ReviewOfResults}
 \end{figure}
 
+
+
+\section{Dynamic wagon assignment and reassignment for pick-up and delivery requests: A deep reinforcement learning framework to address uncertainty in locomotive availability}
+The research conducted by Habibi et al. (2026) \cite{HABIBI2026114351} addresses the complexities of railway logistics through the application of Deep Reinforcement Learning (DRL), specifically utilizing the Proximal Policy Optimization (PPO) algorithm. The primary objective of their framework is the maximization of operational efficiency by ensuring the fulfillment of delivery requests while simultaneously minimizing logistical costs and temporal delays.
+
+\textbf{State Space Representation} \\
+The agent observes a discrete environment where the state $s_t$ at any given time $t$ is defined as:
+$$
+s_t = ( B v_{t,m}^K , y a_{t,w,i})
+$$
+This representation captures two critical components: 
+\begin{itemize}
+    \item The current inventory levels of freight across all pending requests.
+    \item The distribution and availability of specific wagon types across the network's stations.
+\end{itemize}
+This state space design mirrors the requirements of complex railway environments, providing the necessary visibility into resource allocation and demand fulfillment.
+
+\textbf{Action Space Representation} \\
+A recurring challenge in railway scheduling—as observed in the model developed for this thesis—is the lack of scalability when the number of stations or assets increases. To mitigate the "curse of dimensionality" inherent in large-scale discrete action spaces, Habibi et al. introduce a set of twelve heuristic rules \ref{fig:heuristicrules}. These rules act as an abstraction layer for the agent, constraining the action space to high-level wagon assignment and re-assignment decisions. This approach contrasts with the raw weight-based selection mechanism utilized in my model, where the agent directly outputs weights for locomotive selection. While my model currently grants the agent greater freedom, the heuristic approach suggests a viable pathway for reducing complexity in future iterations of the project.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../images/pre_study/HeuristicRules.png}
+    \caption{Heuristic rules for wagon assignment or re-assignment. Taken from Habibi et al. (2026) \cite{HABIBI2026114351}.}
+    \label{fig:heuristicrules}
+\end{figure}
+
+\textbf{Reward Mechanism} \\
+The reward function is formulated to align the agent's behavior with corporate profitability. It is composed of four distinct weighted components:
+\begin{enumerate}
+    \item Positive reinforcement for revenue generated from fulfilled freight deliveries.
+    \item Penalties associated with delivery delays (lateness).
+    \item Operational costs associated with the transportation of fully loaded wagons.
+    \item Variable costs incurred by the movement of empty wagons (positioning costs).
+\end{enumerate}
+
+\textbf{Neural Network Architecture} \\
+The actor-critic framework employs three fully connected hidden layers, each consisting of 256 neurons. Rectified Linear Unit (ReLU) functions are utilized for non-linear activation. The optimization process is conducted via the Adam optimizer, utilizing a learning rate of 0.002 and a discount factor ($\gamma$) of 0.9. These parameters served as the baseline configuration for my model before empirical fine-tuning was performed to adapt to the specific requirements of locomotive selection.
+
+\textbf{Technical Contribution and Thesis Relevance} \\
+The work by Habibi et al. served as a foundational benchmark for this research. While my model focuses on a multi-locomotive selection environment built with the Gymnasium framework, the architectural parallels in the PPO implementation provided a robust starting point for determining network size and hyperparameters. 
+
+Critically, however, the Habibi model assumes a deterministic environment. A significant gap identified during this review is the absence of modeling for stochastic failures or external uncertainty—events that are ubiquitous in real-world railway operations. While my model improves upon the user-interface and visual action-tracking, the next phase of this thesis aims to integrate the heuristic-based dimensionality reduction seen in Habibi's work while introducing environmental uncertainty to better simulate the "real-world" drift between planned schedules and execution.
+
+
 % --- BIBLIOGRAPHY ---
 \newpage
-\bibliographystyle{plain} % This defines the style
+\bibliographystyle{unsrt} % This defines the style
 \bibliography{references} % This looks for 'references.bib'
 \end{document}

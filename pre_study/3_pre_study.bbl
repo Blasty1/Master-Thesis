@@ -1,24 +1,69 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{BasharinLangvilleNaumov2004}
+Gely~P. Basharin, Amy~N. Langville, and Valeriy~A. Naumov.
+\newblock The life and work of {A. A. Markov}.
+\newblock {\em Linear Algebra and its Applications}, 386:3--26, 2004.
+
+\bibitem{ImageReferenceForRLSystemStructure}
+Hao Jiang, Renjie Gui, Zhen Chen, Liang Wu, Jian Dang, and Jie Zhou.
+\newblock An improved sarsa($\lambda$) reinforcement learning algorithm for wireless communication systems.
+\newblock {\em IEEE Access}, PP:1--1, 08 2019.
+
+\bibitem{SuttonBarto2018}
+Richard~S. Sutton and Andrew~G. Barto.
+\newblock {\em Reinforcement Learning: An Introduction}.
+\newblock The MIT Press, Cambridge, Massachusetts, second edition, 2018.
+
+\bibitem{DBLP:journals/corr/MnihKSGAW13}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis Antonoglou, Daan Wierstra, and Martin~A. Riedmiller.
+\newblock Playing atari with deep reinforcement learning.
+\newblock {\em CoRR}, abs/1312.5602, 2013.
+
+\bibitem{DBLP:conf/icml/SchulmanLAPM15}
+John Schulman, Sergey Levine, Pieter Abbeel, Michael~I. Jordan, and Philipp Moritz.
+\newblock Trust region policy optimization.
+\newblock In Francis~R. Bach and David~M. Blei, editors, {\em Proceedings of the 32nd International Conference on Machine Learning, {ICML} 2015, Lille, France, 6-11 July 2015}, volume~37 of {\em {JMLR} Workshop and Conference Proceedings}, pages 1889--1897. JMLR.org, 2015.
+
+\bibitem{BoydVandenberghe2004}
+Stephen Boyd and Lieven Vandenberghe.
+\newblock {\em Convex Optimization}.
+\newblock Cambridge University Press, Cambridge, UK, 2004.
+
+\bibitem{Shewchuk1994}
+Jonathan~Richard Shewchuk.
+\newblock An introduction to the conjugate gradient method without the agonizing pain.
+\newblock Technical report, Carnegie Mellon University, Pittsburgh, PA, USA, 1994.
+
+\bibitem{spinningup2018}
+Joshua Achiam.
+\newblock Spinning up in deep reinforcement learning.
+\newblock \url{https://github.com/openai/spinningup}, 2018.
+
+\bibitem{DBLP:journals/corr/SchulmanWDRK17}
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+\newblock Proximal policy optimization algorithms.
+\newblock {\em CoRR}, abs/1707.06347, 2017.
+
+\bibitem{YANG2025104976}
+Yuhua Yang, Haoyang Huo, Nikola Bešinović, Yichen Sun, and Shaoquan Ni.
+\newblock An advanced learning environment and a scalable deep reinforcement learning approach for rolling stock circulation on urban rail transit line.
+\newblock {\em Transportation Research Part C: Emerging Technologies}, 171:104976, 2025.
+
+\bibitem{ZHAO2026111784}
+Xiaoli Zhao, Dewei Li, and Xinyu Bao.
+\newblock A deep reinforcement learning approach for integrated optimization of train scheduling and rolling stock circulation planning.
+\newblock {\em Computers \& Industrial Engineering}, 213:111784, 2026.
+
+\bibitem{SU2026}
+Xiangyu Su, Yixiang Yue, Bin Guo, Zanyang Cui, and Boyan Li.
+\newblock Solving high-speed rolling stock planning with an improved lstm-ppo reinforcement learning algorithm.
+\newblock {\em Transportmetrica A Transport Science}, 2026.
 
 \bibitem{Bröchin2023}
 Manuel Bröchin, Reto Ramseier, and Kaspar Schüpbach.
 \newblock Rolling stock planning with maintenance constraints by a rolling horizon approach.
 \newblock 04 2023.
-
-\bibitem{Chow2018}
-A.~H.~F. Chow and A.~Pavlides.
-\newblock Cost functions and multi-objective timetabling of mixed train services.
-\newblock {\em Transportation Research Part A}, 113:335--356, 2018.
-
-\bibitem{DfT2014}
-{Department for Transport (DfT)}.
-\newblock Tag unit 3.5.6 values of time and vehicle operating costs, transport analysis guidance data book.
-\newblock Technical report, Department for Transport, United Kingdom, 2014.
-
-\bibitem{Goodfellow2016}
-Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
-\newblock {\em Deep Learning}.
-\newblock MIT Press, Cambridge, MA, 2016.
 
 \bibitem{HABIBI2026114351}
 Parivash Habibi, Mohammad Tamannaei, and Hamid Zarei.
@@ -30,19 +75,19 @@ Cheng shuo Ying, Andy~H.F. Chow, and Kwai-Sang Chin.
 \newblock An actor-critic deep reinforcement learning approach for metro train scheduling with rolling stock circulation under stochastic demand.
 \newblock {\em Transportation Research Part B: Methodological}, 140:210--235, 2020.
 
-\bibitem{SU2026}
-Xiangyu Su, Yixiang Yue, Bin Guo, Zanyang Cui, and Boyan Li.
-\newblock Solving high-speed rolling stock planning with an improved lstm-ppo reinforcement learning algorithm.
-\newblock {\em Transportmetrica A Transport Science}, 2026.
+\bibitem{DfT2014}
+{Department for Transport (DfT)}.
+\newblock Tag unit 3.5.6 values of time and vehicle operating costs, transport analysis guidance data book.
+\newblock Technical report, Department for Transport, United Kingdom, 2014.
 
-\bibitem{YANG2025104976}
-Yuhua Yang, Haoyang Huo, Nikola Bešinović, Yichen Sun, and Shaoquan Ni.
-\newblock An advanced learning environment and a scalable deep reinforcement learning approach for rolling stock circulation on urban rail transit line.
-\newblock {\em Transportation Research Part C: Emerging Technologies}, 171:104976, 2025.
+\bibitem{Chow2018}
+A.~H.~F. Chow and A.~Pavlides.
+\newblock Cost functions and multi-objective timetabling of mixed train services.
+\newblock {\em Transportation Research Part A}, 113:335--356, 2018.
 
-\bibitem{ZHAO2026111784}
-Xiaoli Zhao, Dewei Li, and Xinyu Bao.
-\newblock A deep reinforcement learning approach for integrated optimization of train scheduling and rolling stock circulation planning.
-\newblock {\em Computers \& Industrial Engineering}, 213:111784, 2026.
+\bibitem{Goodfellow2016}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock {\em Deep Learning}.
+\newblock MIT Press, Cambridge, MA, 2016.
 
 \end{thebibliography}
