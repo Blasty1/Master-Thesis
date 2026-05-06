@@ -50,9 +50,8 @@ Bruno Carchia \\
 \noindent \textbf{Keywords:} Deep Reinforcement Learning, Explainable AI, Engine Rescheduling, PPO, Rolling Horizon Planning, Locomotive Assignment, , Condition-Based Maintenance , Rolling stock planning , Continuous Hazard Model , Shared-Weight Neural Networks , XAI
 \section{Background \& Objective}
 This thesis project is part of an applied research project at RISE focusing on AI-based
-decision support for locomotive rescheduling in rail freight operations. Efficient engine
-allocation is a complex task, constrained by operational factors such as maintenance
-schedules, workshop availability, and unplanned disruptions.\\
+decision support for locomotive rescheduling in rail freight operations. The problem of efficient locomotive allocation takes a predetermined train timetable as its primary input and computes an optimal assignment policy as its output. This strategic policy dictates the precise pairing of individual locomotive units to specific scheduled train services. The fundamental objective of this allocation framework is to systematically mitigate overall operational latency while simultaneously minimizing aggregate costs for the railway enterprise.
+It is a complex task, constrained by operational factors such as maintenance schedules, workshop availability, and unplanned disruptions.\\
 Locomotives are a central and limited resource for freight train operators, where operational
 flexibility and dynamic rescheduling capabilities are critical. The project is carried out in
 collaboration with Green Cargo, Sweden’s largest rail freight operator. Every day, Green
@@ -63,11 +62,9 @@ delays and better transfer operational expertise within the organization. Curren
 lack of advanced decision support tools for short-term planning in the rail sector since
 improved planning could directly address the industry’s key challenges: flexibility, efficiency,
 and reliability.\\
-In this thesis, i will work with a simulation-based environment that models engine
+In this thesis, we will work with a simulation-based environment that models engine
 planning problem. The environment includes train schedules, locomotive states, maintenance
-rules, and simplified operational constraints. The existing setup uses deep reinforcement
-learning (DRL) to allocate locomotives sequentially, without explicitly considering future
-consequences.\\
+rules, and simplified operational constraints. The incumbent framework utilizes Deep Reinforcement Learning (DRL) to address the sequential allocation of locomotives. However, this baseline model is fundamentally limited by its deterministic assumptions, as it fails to account for proactive (early) maintenance interventions and stochastic operational disruptions (random events). Furthermore, the current implementation relies on a suboptimal neural network architecture that lacks the representational capacity necessary to capture the complex underlying dynamics of the state space. Consequently, the DRL agent is unable to formulate or converge upon a coherent optimization strategy. In practice, this architectural deficiency degrades the model's decision-making process to a near-random selection heuristic, entirely devoid of any learned, strategic policy.\\
 The primary objective of the thesis is to evolve this setup into a rolling planning framework,
 where decisions are made continuously across a longer horizon and updated as new events
 occur. The goal is to enable the agent to respond dynamically to delays, maintenance needs,
@@ -95,7 +92,7 @@ The project investigates how deep reinforcement learning can be extended from a 
 In addition, the project explores a secondary question related to interpretability:
 \begin{quote}\emph{RQ T.2: How can explainable AI techniques be integrated into a deep reinforcement learning-based planning system to improve transparency and understanding of rescheduling decisions for human planners?}\end{quote}
 \subsection{Detailed Tasks}
-Me and my industrial supervisor identified a set of tasks that summarize what i should do for this project:
+Me and my industrial supervisor identified a set of tasks that summarize what should be done for this project:
 \begin{enumerate}
     \item \textbf{Simulation Environment Optimization:} Transition from a discrete step-based simulation to an event-driven architecture. The goal is to isolate meaningful decision points, reduce computational noise, and improve overall training efficiency.
     
@@ -138,6 +135,20 @@ Me and my industrial supervisor identified a set of tasks that summarize what i 
         \item Align the model output with industry-standard reporting formats to facilitate stakeholder communication.
     \end{enumerate}
 \end{enumerate}
+
+\subsection{Ethics and Sustainability}
+The integration of AI-based decision support systems in logistics presents several important ethical and sustainability considerations. From an environmental and economic sustainability perspective, rail freight is inherently one of the most carbon-efficient modes of transport. By optimizing locomotive allocation, preventing unnecessary idle times, and reducing operational latency, this thesis aims to enhance the competitiveness and reliability of rail transport. Improving rail efficiency encourages a modal shift from road to rail, which directly contributes to the reduction of greenhouse gas emissions in the logistics sector. Furthermore, the exploration of condition-based, proactive maintenance (Model V3) promotes the sustainable use of resources by potentially extending the lifespan of rolling stock.
+
+Ethically, the project actively mitigates the ``black box'' nature of neural networks by incorporating Explainable AI (XAI) techniques. The system is explicitly designed as a transparent decision-support tool rather than an opaque replacement for human operators. The project aims to empower the planners at Green Cargo, improving their working environment without displacing their operational expertise. Additionally, because the training and evaluation of the DRL models will be conducted exclusively using synthetically generated datasets, the project completely bypasses potential ethical issues related to data privacy, GDPR compliance, or the mishandling of sensitive commercial data.
+
+\subsection{Limitations}
+Several limitations must be acknowledged due to the standard time constraints of a master's thesis and the defined scope of the simulation.
+
+Firstly, the reliance on synthetically generated datasets means that the model will not be exposed to the full spectrum of noise, data entry errors, and extreme edge cases present in raw industrial data. Consequently, while the algorithmic approach will be validated, a direct transfer of the developed policy to live, real-world operations would require further training and validation on historical Green Cargo data.
+
+Secondly, the custom simulation environment naturally relies on abstracted and simplified operational constraints. While it models train schedules, locomotive states, and maintenance rules, it may not account for secondary logistical bottlenecks, such as complex driver union regulations, specific shunting yard capacities, or severe weather-related track degradations.
+
+Finally, while the completion of the core DRL model (Model V1) is the primary objective, the full realization and optimization of the stochastic (Model V2) and autonomous maintenance (Model V3) iterations are dependent on the agent's convergence stability in earlier phases. Additionally, explainability in Deep Reinforcement Learning remains an open and challenging research area; the XAI tools developed for this project will likely provide strong proxy visualizations and heuristic approximations of the agent's policy, rather than absolute, mathematically provable causal links for every sequential decision.
 \section{Evaluation}
 
 The evaluation strategy is designed to measure the efficacy of the Deep Reinforcement Learning (DRL) agent across successive development stages. \textbf{Model V1} is defined as the core research objective and the minimum expected contribution of this thesis. While the project scope allows for the exploration of more complex behaviors, the stable implementation of V1 represents the primary requirement for a successful research outcome.
