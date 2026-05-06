@@ -4,45 +4,45 @@ The top-level auxiliary file: 3_pre_study.aux
 The style file: unsrt.bst
 Database file #1: references.bib
 Warning--empty journal in Bröchin2023
-You've used 18 entries,
+You've used 19 entries,
             1791 wiz_defined-function locations,
-            575 strings with 7415 characters,
-and the built_in function-call counts, 3825 in all, are:
-= -- 317
-> -- 221
+            581 strings with 7623 characters,
+and the built_in function-call counts, 3976 in all, are:
+= -- 330
+> -- 229
 < -- 2
-+ -- 80
-- -- 62
-* -- 249
-:= -- 658
-add.period$ -- 55
-call.type$ -- 18
-change.case$ -- 18
++ -- 83
+- -- 64
+* -- 255
+:= -- 686
+add.period$ -- 58
+call.type$ -- 19
+change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 166
-empty$ -- 350
-format.name$ -- 62
-if$ -- 836
+cite$ -- 20
+duplicate$ -- 174
+empty$ -- 364
+format.name$ -- 64
+if$ -- 869
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 18
-newline$ -- 93
-num.names$ -- 20
-pop$ -- 47
+int.to.str$ -- 19
+missing$ -- 19
+newline$ -- 98
+num.names$ -- 21
+pop$ -- 48
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 67
+skip$ -- 72
 stack$ -- 0
 substring$ -- 165
-swap$ -- 29
+swap$ -- 30
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 31
-width$ -- 20
-write$ -- 200
+while$ -- 32
+width$ -- 21
+write$ -- 211
 (There was 1 warning)

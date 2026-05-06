@@ -90,4 +90,9 @@ Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
 \newblock {\em Deep Learning}.
 \newblock MIT Press, Cambridge, MA, 2016.
 
+\bibitem{DBLP:journals/corr/abs-2109-02869}
+Yujin Tang and David Ha.
+\newblock The sensory neuron as a transformer: Permutation-invariant neural networks for reinforcement learning.
+\newblock {\em CoRR}, abs/2109.02869, 2021.
+
 \end{thebibliography}

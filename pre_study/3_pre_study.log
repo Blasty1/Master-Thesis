@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  5 MAY 2026 18:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  6 MAY 2026 13:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -365,7 +365,7 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__pdf_internal_box=\box60
 ) (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux
 
-LaTeX Warning: Label `fig:heuristicrules' multiply defined.
+LaTeX Warning: Label `fig:ReviewOfResults' multiply defined.
 
 )
 \openout1 = `3_pre_study.aux'.
@@ -588,7 +588,7 @@ Package pdftex.def Info: ../images/pre_study/HeuristicRules.png  used on input l
 [24 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/HeuristicRules.png>]
 
 [25]
-<../images/pre_study/ReviewOfResults.png, id=313, 460.72125pt x 335.2525pt>
+<../images/pre_study/ReviewOfResults.png, id=312, 460.72125pt x 335.2525pt>
 File: ../images/pre_study/ReviewOfResults.png Graphic file (type png)
 <use ../images/pre_study/ReviewOfResults.png>
 Package pdftex.def Info: ../images/pre_study/ReviewOfResults.png  used on input line 601.
@@ -598,26 +598,30 @@ Package pdftex.def Info: ../images/pre_study/ReviewOfResults.png  used on input 
 [26]
 
 [27 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ReviewOfResults.png>]
-File: ../images/pre_study/HeuristicRules.png Graphic file (type png)
-<use ../images/pre_study/HeuristicRules.png>
-Package pdftex.def Info: ../images/pre_study/HeuristicRules.png  used on input line 628.
-(pdftex.def)             Requested size: 418.25555pt x 345.73692pt.
+<../images/pre_study/PIArchitecture.png, id=335, 943.525pt x 331.2375pt>
+File: ../images/pre_study/PIArchitecture.png Graphic file (type png)
+<use ../images/pre_study/PIArchitecture.png>
+Package pdftex.def Info: ../images/pre_study/PIArchitecture.png  used on input line 618.
+(pdftex.def)             Requested size: 418.25555pt x 146.83667pt.
 
 
-[28]
+[28 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PIArchitecture.png>]
+File: ../images/pre_study/ReviewOfResults.png Graphic file (type png)
+<use ../images/pre_study/ReviewOfResults.png>
+Package pdftex.def Info: ../images/pre_study/ReviewOfResults.png  used on input line 636.
+(pdftex.def)             Requested size: 418.25555pt x 304.34872pt.
 
-[29]
 
-[30] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl
+[29] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl
 Underfull \hbox (badness 1577) in paragraph at lines 19--22
 []\OT1/cmr/m/n/10.95 Volodymyr Mnih, Ko-ray Kavukcuoglu, David Sil-ver, Alex Graves, Ioan-nis
  []
 
 
 
-[31])
+[30])
 
-[32] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux)
+[31] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -630,18 +634,18 @@ Package rerunfilecheck Info: File `3_pre_study.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 14657 strings out of 474662
- 256282 string characters out of 5751108
+ 14663 strings out of 474662
+ 256663 string characters out of 5751108
  805788 words of memory out of 5000000
- 37374 multiletter control sequences out of 15000+600000
+ 37383 multiletter control sequences out of 15000+600000
  568897 words of font info for 75 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  108i,11n,107p,10971b,583s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/brunobryan/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf (32 pages, 1510738 bytes).
+Output written on /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf (31 pages, 1616126 bytes).
 PDF statistics:
- 524 PDF objects out of 1000 (max. 8388607)
- 420 compressed objects within 5 object streams
- 163 named destinations out of 1000 (max. 500000)
- 171 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 520 PDF objects out of 1000 (max. 8388607)
+ 414 compressed objects within 5 object streams
+ 160 named destinations out of 1000 (max. 500000)
+ 176 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,27 +1,28 @@
 # Fdb version 4
-["bibtex /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study"] 1777998392.69931 "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux" "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl" "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study" 1777998394.97017 0
-  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux" 1777998394.88325 23009 6f9e78a4bb15d829df76a942a9419515 "pdflatex"
-  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/references.bib" 1777995615.06744 17098 f5329d113597fbc20137c94ca713cc01 ""
+["bibtex /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study"] 1778065612.87203 "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux" "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl" "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study" 1778065615.26488 0
+  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux" 1778065615.1761 22841 7760115ee4b66cf4bcc53e3cc1ede443 "pdflatex"
+  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/references.bib" 1778059958.06814 17704 2da3a19a2f589b3e4208baa6f397c3bf ""
   "/usr/local/texlive/2025basic/texmf-dist/bibtex/bst/base/unsrt.bst" 1292289607 18030 1376b4b231b50c66211e47e42eda2875 ""
   (generated)
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl"
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.blg"
   (rewritten before read)
-["pdflatex"] 1777998392.723 "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.tex" "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf" "3_pre_study" 1777998394.97038 0
+["pdflatex"] 1778065612.95035 "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.tex" "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf" "3_pre_study" 1778065615.26508 0
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/2ActorCriticNetworkArchitecture.png" 1777366253.96103 231973 add40d305eb7dc6a5c24d2c5c7c5c4b1 ""
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ActivityAndMaintenanceHorizon.png" 1777382225.21152 98096 db1bb749a4c8ddce9654f945b602869c ""
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ActorCriticNetworkArchitecture.png" 1777287511.72102 137244 092cbd5041635391c9182bd7eda3925f ""
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png" 1777907057.16356 5041 5d2a20397b48ca3ac4685c7a964663d2 ""
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/HeuristicRules.png" 1777455289.64537 251363 53e65141e4e13f7a2783bfbf9eb6bc17 ""
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/LSTM-PPO-Algorithm.png" 1777372749.29266 245045 a10d48c23312d72f01653c2827013526 ""
+  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PIArchitecture.png" 1778063232.93119 156175 90a77d6edbc8e105d5fd4e1b5c6837e6 ""
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PPO_algorithm.png" 1777997006.37107 206993 aa05b1f05fe522cd43163363387b5e77 ""
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PolicyGradientAlgorithms.png" 1777974227.7952 144360 714eac2b73768f0408eca6a336a42e8d ""
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ReviewOfResults.png" 1777470191.24529 97760 813356215d1f4fce208914491c9908eb ""
   "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/TRPO_algorithm.png" 1777995704.04682 303609 48c16eda2b0de1b9cc44a372a88cf5d9 ""
-  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux" 1777998394.88325 23009 6f9e78a4bb15d829df76a942a9419515 "pdflatex"
-  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl" 1777998392.71985 4471 8f4a9baaafee07aa676549047e92ddb4 "bibtex /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study"
-  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.out" 1777998393.59116 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.tex" 1777998389.19296 60539 56efe2446d651ea67a039f0aa6912e2b ""
+  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux" 1778065615.1761 22841 7760115ee4b66cf4bcc53e3cc1ede443 "pdflatex"
+  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl" 1778065612.94326 4698 568eff7779115f73c403274f6c78ba66 "bibtex /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study"
+  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.out" 1778065613.75118 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.tex" 1778065607.39624 60613 73b26eb5cbdd3bab5ef54ebe970d911f ""
   "/Users/brunobryan/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk" 1763892558.45586 12644 0e6dc0bccb8d8754be58f4023273319f ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""

@@ -603,49 +603,44 @@ Most significantly, Ying et al. highlight the inherent difficulty of achieving c
 \label{fig:ReviewOfResults}
 \end{figure}
 
+NEW FROM HERE
 
+\section{The Sensory Neuron as a Transformer: Permutation-Invariant Neural Networks for Reinforcement Learning}
 
-\section{Dynamic wagon assignment and reassignment for pick-up and delivery requests: A deep reinforcement learning framework to address uncertainty in locomotive availability}
-The research conducted by Habibi et al. (2026) \cite{HABIBI2026114351} addresses the complexities of railway logistics through the application of Deep Reinforcement Learning (DRL), specifically utilizing the Proximal Policy Optimization (PPO) algorithm. The primary objective of their framework is the maximization of operational efficiency by ensuring the fulfillment of delivery requests while simultaneously minimizing logistical costs and temporal delays.
+The work by Tang et al. (2021) \cite{DBLP:journals/corr/abs-2109-02869} investigates the property of permutation invariance (PI) within neural networks, a concept that is highly central to the methodology developed in this thesis. A fundamental premise of their research is that neural networks should be capable of recognizing that a set of items represents the same collective entity, regardless of the order in which those items are presented. The authors formally demonstrate that forcing an agent to learn a coherent representation of a permutation-invariant observation space leads to more robust and reliable policies, which exhibit superior generalization when evaluated in unseen environments.
 
-\textbf{State Space Representation} \\
-The agent observes a discrete environment where the state $s_t$ at any given time $t$ is defined as:
-$$
-s_t = ( B v_{t,m}^K , y a_{t,w,i})
-$$
-This representation captures two critical components: 
-\begin{itemize}
-    \item The current inventory levels of freight across all pending requests.
-    \item The distribution and availability of specific wagon types across the network's stations.
-\end{itemize}
-This state space design mirrors the requirements of complex railway environments, providing the necessary visibility into resource allocation and demand fulfillment.
+Mathematically, an agent's policy is considered Permutation-Invariant if its output remains unchanged when the input elements are reordered. Formally, for a function $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ and any permutation matrix $P$, the function is PI if $f(Px) = f(x)$ for all $x \in \mathbb{R}^n$. The authors also explore a related paradigm known as Permutation Equivariance (PE). PE applies when the dimensions of the input and output spaces are equal ($f: \mathbb{R}^n \rightarrow \mathbb{R}^n$), such that applying a permutation to the input results in the exact same permutation being applied to the output: $f(Px) = P f(x)$.
 
-\textbf{Action Space Representation} \\
-A recurring challenge in railway scheduling—as observed in the model developed for this thesis—is the lack of scalability when the number of stations or assets increases. To mitigate the "curse of dimensionality" inherent in large-scale discrete action spaces, Habibi et al. introduce a set of twelve heuristic rules \ref{fig:heuristicrules}. These rules act as an abstraction layer for the agent, constraining the action space to high-level wagon assignment and re-assignment decisions. This approach contrasts with the raw weight-based selection mechanism utilized in my model, where the agent directly outputs weights for locomotive selection. While my model currently grants the agent greater freedom, the heuristic approach suggests a viable pathway for reducing complexity in future iterations of the project.
+To achieve PI, Tang et al. augmented the agent's policy network ($\pi$) with an additional layer termed the \textit{AttentionNeuron}. This layer comprises a decentralized set of "sensory neurons," each possessing a restricted receptive field of the observation space. Specifically, at time step $t$, the $i$-th sensory neuron observes only the $i$-th component of the observation vector, $o_t[i]$, alongside the previous action, $a_{t-1}$. Each sensory neuron independently computes messages by applying shared transformation functions $f_k(o_t[i], a_{t-1})$ and $f_v(o_t[i])$. Subsequently, an attention mechanism ( the detailed mechanics of which fall outside the primary scope of this review ) aggregates these individual messages to generate a global latent code $m_t$. This latent representation is then broadcasted to the downstream components of the network.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{../images/pre_study/HeuristicRules.png}
-    \caption{Heuristic rules for wagon assignment or re-assignment. Taken from Habibi et al. (2026) \cite{HABIBI2026114351}.}
-    \label{fig:heuristicrules}
+\centering
+\includegraphics[width=\textwidth]{../images/pre_study/PIArchitecture.png}
+\caption{Architecture of the neural network for the permutation-invariant agent. Adapted from Tang et al., 2021 \cite{DBLP:journals/corr/abs-2109-02869}.}
+\label{fig:PIArchitecture}
 \end{figure}
 
-\textbf{Reward Mechanism} \\
-The reward function is formulated to align the agent's behavior with corporate profitability. It is composed of four distinct weighted components:
-\begin{enumerate}
-    \item Positive reinforcement for revenue generated from fulfilled freight deliveries.
-    \item Penalties associated with delivery delays (lateness).
-    \item Operational costs associated with the transportation of fully loaded wagons.
-    \item Variable costs incurred by the movement of empty wagons (positioning costs).
-\end{enumerate}
-
-\textbf{Neural Network Architecture} \\
-The actor-critic framework employs three fully connected hidden layers, each consisting of 256 neurons. Rectified Linear Unit (ReLU) functions are utilized for non-linear activation. The optimization process is conducted via the Adam optimizer, utilizing a learning rate of 0.002 and a discount factor ($\gamma$) of 0.9. These parameters served as the baseline configuration for my model before empirical fine-tuning was performed to adapt to the specific requirements of locomotive selection.
+For their implementation, the authors opted for a Feed-Forward Neural Network (FFNN) rather than a Recurrent Neural Network (RNN), noting that FFNNs are better suited for processing high-dimensional inputs in this context. Furthermore, they applied normalization techniques to both the inputs and outputs of the network, utilizing a softmax non-linear activation function.
 
 \textbf{Technical Contribution and Thesis Relevance} \\
-The work by Habibi et al. served as a foundational benchmark for this research. While my model focuses on a multi-locomotive selection environment built with the Gymnasium framework, the architectural parallels in the PPO implementation provided a robust starting point for determining network size and hyperparameters. 
+A significant finding from Tang et al. is that agents utilizing this architecture maintain high performance even when the ordering of observations is randomly permuted multiple times during an episode. Remarkably, this robust performance is achieved without explicitly training the agent on highly re-shuffled data. However, the authors note that while permutation invariance is naturally applicable to observation spaces, seamlessly extending this property to action spaces remains an ongoing challenge.
 
-Critically, however, the Habibi model assumes a deterministic environment. A significant gap identified during this review is the absence of modeling for stochastic failures or external uncertainty—events that are ubiquitous in real-world railway operations. While my model improves upon the user-interface and visual action-tracking, the next phase of this thesis aims to integrate the heuristic-based dimensionality reduction seen in Habibi's work while introducing environmental uncertainty to better simulate the "real-world" drift between planned schedules and execution.
+This paper provided crucial foundational insights for designing the neural network architecture of the actor in this thesis. Because the scheduling algorithm evaluates sets of locomotives , whether ranking them for maintenance or dispatching them to trains, it was imperative that the model exhibit permutation invariance with respect to the ordering of the locomotive array. While the architecture implemented in this thesis represents a computationally cheaper, structurally simplified version of Tang et al.'s model, the core principles for managing unordered sets and ensuring representational consistency were directly inspired by their findings.
+HERE is new
+\section{Research on optimization of C4 repair operation of Harmony electric locomotive based on preventive maintenance}
+Liu et all. (2025) \cite{10.1371/journal.pone.0328399} studies how to reduce high maintenance for the most commone locomotive type for freight transport in China: Harmonious High-Power AC Electric Locomotive.
+They wante to create a preventive maintenance plan to reduce the reparing costs using an heuristic algorithm.
+
+
+\textbf{Technical Contribution and Thesis Relevance} \\
+The results of the study showed that the preventive maintenance approach resulted in a 51.04\% reduction in total cost and a 7.89\% increase in availability over the same operating cycle compared to the traditional fixed repair schedule maintenance program. This paper explained why we moved from a very direct approach of the maintenance to a much more strategic strategy chosen by the agent. Maintenance could represent a bottlenack in freight transports.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{../images/pre_study/ReviewOfResults.png}
+\caption{Test of the actor-critic agent during the training process.Taken from (Ying et al., 2020 \cite{YING2020210}) }
+\label{fig:ReviewOfResults}
+\end{figure}
 
 
 % --- BIBLIOGRAPHY ---
