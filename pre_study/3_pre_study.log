@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  6 MAY 2026 13:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  7 MAY 2026 18:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -606,22 +606,82 @@ Package pdftex.def Info: ../images/pre_study/PIArchitecture.png  used on input l
 
 
 [28 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PIArchitecture.png>]
+
+[29]
+
+[30]
+Underfull \hbox (badness 1168) in paragraph at lines 673--673
+\OT1/cmr/m/n/10.95 to-tal) ac-cord-ing to Ahuja et al.
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 674--674
+\OT1/cmr/m/n/10.95 axles) ac-cord-ing to Ahuja et al.
+ []
+
+
+Underfull \hbox (badness 1189) in paragraph at lines 676--676
+[]\OT1/cmr/m/n/10.95 Heterogeneous (In-ter-modal, au-to-
+ []
+
+
+Overfull \hbox (44.53575pt too wide) in paragraph at lines 668--679
+ [][] 
+ []
+
+
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 698--698
+[]\OT1/cmr/m/n/10 Min in-vest-men-t/-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--698
+[]\OT1/cmr/m/n/10 Benders de-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 701--701
+[]\OT1/cmr/m/n/10 Goldberg-
+ []
+
+
+Underfull \hbox (badness 6592) in paragraph at lines 702--702
+[]\OT1/cmr/m/n/10 Vaidyanathan et al.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 702--702
+[]\OT1/cmr/m/n/10 Goldberg-
+ []
+
+
+Overfull \hbox (40.083pt too wide) in paragraph at lines 695--704
+ [][] 
+ []
+
+
+
+[32]
 File: ../images/pre_study/ReviewOfResults.png Graphic file (type png)
 <use ../images/pre_study/ReviewOfResults.png>
-Package pdftex.def Info: ../images/pre_study/ReviewOfResults.png  used on input line 636.
+Package pdftex.def Info: ../images/pre_study/ReviewOfResults.png  used on input line 717.
 (pdftex.def)             Requested size: 418.25555pt x 304.34872pt.
 
 
-[29] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl
+[33] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl
 Underfull \hbox (badness 1577) in paragraph at lines 19--22
 []\OT1/cmr/m/n/10.95 Volodymyr Mnih, Ko-ray Kavukcuoglu, David Sil-ver, Alex Graves, Ioan-nis
  []
 
 
 
-[30])
+[34]
 
-[31] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux)
+[35])
+
+[36] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -634,18 +694,18 @@ Package rerunfilecheck Info: File `3_pre_study.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 14663 strings out of 474662
- 256663 string characters out of 5751108
- 805788 words of memory out of 5000000
- 37383 multiletter control sequences out of 15000+600000
- 568897 words of font info for 75 fonts, out of 8000000 for 9000
+ 14715 strings out of 474662
+ 257501 string characters out of 5751108
+ 807788 words of memory out of 5000000
+ 37409 multiletter control sequences out of 15000+600000
+ 569850 words of font info for 79 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  108i,11n,107p,10971b,583s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/brunobryan/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf (31 pages, 1616126 bytes).
+Output written on /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf (36 pages, 1634347 bytes).
 PDF statistics:
- 520 PDF objects out of 1000 (max. 8388607)
- 414 compressed objects within 5 object streams
- 160 named destinations out of 1000 (max. 500000)
- 176 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 591 PDF objects out of 1000 (max. 8388607)
+ 480 compressed objects within 5 object streams
+ 184 named destinations out of 1000 (max. 500000)
+ 200 words of extra memory for PDF output out of 10000 (max. 10000000)
 

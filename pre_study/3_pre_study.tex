@@ -603,7 +603,7 @@ Most significantly, Ying et al. highlight the inherent difficulty of achieving c
 \label{fig:ReviewOfResults}
 \end{figure}
 
-NEW FROM HERE
+NEW FROM HERE for supervisor check 
 
 \section{The Sensory Neuron as a Transformer: Permutation-Invariant Neural Networks for Reinforcement Learning}
 
@@ -626,14 +626,91 @@ For their implementation, the authors opted for a Feed-Forward Neural Network (F
 A significant finding from Tang et al. is that agents utilizing this architecture maintain high performance even when the ordering of observations is randomly permuted multiple times during an episode. Remarkably, this robust performance is achieved without explicitly training the agent on highly re-shuffled data. However, the authors note that while permutation invariance is naturally applicable to observation spaces, seamlessly extending this property to action spaces remains an ongoing challenge.
 
 This paper provided crucial foundational insights for designing the neural network architecture of the actor in this thesis. Because the scheduling algorithm evaluates sets of locomotives , whether ranking them for maintenance or dispatching them to trains, it was imperative that the model exhibit permutation invariance with respect to the ordering of the locomotive array. While the architecture implemented in this thesis represents a computationally cheaper, structurally simplified version of Tang et al.'s model, the core principles for managing unordered sets and ensuring representational consistency were directly inspired by their findings.
-HERE is new
-\section{Research on optimization of C4 repair operation of Harmony electric locomotive based on preventive maintenance}
-Liu et all. (2025) \cite{10.1371/journal.pone.0328399} studies how to reduce high maintenance for the most commone locomotive type for freight transport in China: Harmonious High-Power AC Electric Locomotive.
-They wante to create a preventive maintenance plan to reduce the reparing costs using an heuristic algorithm.
 
 
-\textbf{Technical Contribution and Thesis Relevance} \\
-The results of the study showed that the preventive maintenance approach resulted in a 51.04\% reduction in total cost and a 7.89\% increase in availability over the same operating cycle compared to the traditional fixed repair schedule maintenance program. This paper explained why we moved from a very direct approach of the maintenance to a much more strategic strategy chosen by the agent. Maintenance could represent a bottlenack in freight transports.
+\section{Optimization of Locomotive Repair Operations via Preventive Maintenance}
+
+Liu et al. (2025) \cite{10.1371/journal.pone.0328399} investigate strategies to mitigate the substantial maintenance costs associated with the Harmonious High-Power AC Electric Locomotive, the predominant locomotive model utilized for freight transport in China. The primary objective of their study is the development of a preventive maintenance schedule, optimized via a heuristic algorithm, to minimize overall repair expenditures.
+
+While previous literature, such as the works of Hu et al. \cite{Huetal2021} and Zhu et al. \cite{Zhuetal2021}, primarily focused on modeling the failure of isolated components under the assumption of statistical independence, Liu et al. address this limitation. They propose a genetic algorithm specifically designed for the maintenance optimization of multi-component systems, capturing the complex nature of entire locomotives.
+
+Of particular relevance to this thesis is their application of the Weibull distribution to analyze the delay-time concept , defined as the critical interval between the initial manifestation of a defect and the ultimate failure of the system. The Weibull distribution effectively models the interdependencies between component defect probability, operational lifespan, and delay time. The authors note that an elevated probability of a defective component correspondingly diminishes the operating life relative to this delay-time stage. 
+
+The component failure rate function is mathematically defined as:
+\begin{equation}
+\lambda_a(t) = \left(\frac{\delta_a}{\eta_a}\right)\left(\frac{t}{\eta_a}\right)^{\delta_a-1}
+\end{equation}
+where $\delta_a$ denotes the shape parameter (frequently denoted as $\beta$ in standard reliability literature) and $\eta_a$ represents the scale parameter. Furthermore, the authors incorporate an improvement factor, adapting the methodology of Dong et al. \cite{Dongetal2020}, to mathematically represent the restoration of component health following preventive maintenance interventions. Building upon this, they extend their framework to encompass complex multi-component interactions, evaluating how systemic dependencies influence optimal maintenance intervals.
+
+\subsection*{Technical Contribution and Thesis Relevance}
+
+Empirical results from Liu et al. demonstrate that their optimized preventive maintenance approach yields a 51.04\% reduction in total maintenance costs and a 7.89\% increase in fleet availability compared to traditional fixed-schedule repair programs. This significant performance margin emphasizes the necessity of transitioning from rigid maintenance schedules to dynamic, strategic methodologies where a decision-making agent possesses the autonomy to optimize interventions. Conclusively, the study formally identifies maintenance operations as a critical bottleneck in freight transport efficiency.
+
+While Liu et al. provide a comprehensive analysis of complex intra-system relationships, this thesis deliberately adopts a more foundational simulation of hazard failures utilizing the Weibull distribution, abstracting away the granular multi-component dependencies modeled in their later sections. This methodological divergence is driven primarily by computational scalability. The heuristic approach proposed in the cited article, while effective for demonstrating preventive maintenance concepts, is computationally intensive and scales poorly. In contrast, the Reinforcement Learning agent developed in this thesis yields a dynamic policy capable of scaling efficiently across large fleets of locomotives.
+
+Finally, although Liu et al. successfully employ an improvement factor \cite{Dongetal2020} to model post-maintenance condition restoration, a similar mechanism was omitted from this research. This limitation arises from the reliance on synthetic data; lacking complete access to historical maintenance schedules and empirical degradation profiles, applying a rigorous improvement factor was not feasible within the scope of this project.
+
+\section{Foundations of the Locomotive Assignment Problem (LAP)}
+
+The Locomotive Assignment Problem (LAP) constitutes a fundamental challenge in railway logistics, involving the optimal allocation of a motive power fleet to a predetermined set of scheduled services while satisfying complex operational constraints and minimizing aggregate expenditures. This review is primarily informed by the seminal survey of Piu and Speranza (2014) \cite{Piuetal2014}, which provides a taxonomy of algorithms and mathematical programming approaches to the problem. Historically, much of the research in this domain originated in North America, which manages one of the most extensive railroad infrastructures globally (omprising approximately 140,000 miles ) and represents one of the most cost-efficient freight systems in existence. However, in the decade since the publication of Piu and Speranza's survey, significant contributions have emerged from other global regions, reflecting the growing universal demand for operational efficiency.
+
+In accordance with standard hierarchical planning frameworks, locomotive scheduling is analyzed across three distinct levels based on the planning horizon:
+\begin{itemize}
+    \item \textbf{Strategic Level:} Focuses on long-term fleet sizing and composition. At this stage, individual locomotive identifiers (IDs) are neglected, and the train schedule is considered immutable, typically disregarding delays or stochastic disruptions.
+    \item \textbf{Tactical and Operational Levels:} These levels involve a lower degree of abstraction, necessitating the assignment of specific locomotive units to services. These models must account for real-time constraints, such as fueling schedules and maintenance intervals, while maintaining robustness against operational disruptions and variance in train schedules.
+\end{itemize}
+
+A critical distinction must be drawn between passenger and freight rail operations, as the latter presents a significantly higher degree of combinatorial complexity. The operational disparities between these two systems are synthesized in Table \ref{tab:difference_between_freight_and_passenger_trains}.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|p{3.5cm}|p{5.5cm}|p{6cm}|}
+        \hline
+        \textbf{Feature} & \textbf{Passenger Trains} & \textbf{Freight Trains} \\ \hline
+        \textbf{Scheduling Logic} & Fixed, time-sensitive schedules & Tonnage-based or unscheduled departures \\ \hline
+        \textbf{Network Priority} & High (Time-critical priority) & Lower (Subject to delays/sidings) \\ \hline
+        \textbf{Motive Power} & 1--2 active locomotives & 2--3x more active units (up to 12 total) according to Ahuja et al. (2005b) \cite{Ahujaetal2005b} \\ \hline
+        \textbf{Tractive Effort} & Standard axle configurations & High active axle count (up to 24 axles) according to Ahuja et al. (2005b) \cite{Ahujaetal2005b} \\ \hline
+        \textbf{Tonnage Variance} & Low; predetermined & High; high variance across service types \\ \hline
+        \textbf{Consist Diversity} & Homogeneous/Standardized & Heterogeneous (Intermodal, automotive, etc.) \cite{Vaidyanathanetal2008a} \\ \hline
+        \textbf{Operational Complexity} & Low connection constraints & High (Consist management, compatibility) \\ \hline
+    \end{tabular}
+    \caption{Comparative analysis of operational and physical characteristics between passenger and freight rail systems.}
+    \label{tab:difference_between_freight_and_passenger_trains}
+\end{table}
+
+LAP formulations can be classified according to their objective functions (e.g., cost minimization or fleet utilization) or their planning depth. A primary distinction is made between \textit{single-locomotive models}, where a service is powered by a single unit, and \textit{multiple-locomotive models}. The latter, which is the focus of this thesis, represents a significantly more complex problem where a train's power requirements are met by a combination of potentially heterogeneous units. 
+
+The seminal research by Florian et al. (1976) \cite{Florianetal1976} was among the first to address multiple locomotive requirements, aiming to minimize capital investment and maintenance costs over a long-term horizon. However, the computational limitations of that era restricted the scalability of their optimization techniques. Subsequently, Scholz (2000) \cite{Scholz2000} examined the Swedish railway system—the same context explored in this research—aiming to satisfy a schedule within defined departure windows using a minimal fleet size. Scholz utilized Gantt charts for visualization, where rectangular blocks represent trip durations, a methodology mirrored in the implementation of this thesis. Notably, Scholz is credited with integrating preventive maintenance into scheduling through Lagrangian relaxation, though this method is often limited in its ability to scale to high-dimensional, real-time problems.
+
+A paradigm shift occurred with the introduction of the Approximate Dynamic Programming (ADP) framework by Powell et al. (2001) \cite{Powelletal2001}. This represented a transition from traditional mathematical programming toward learning-based heuristics. Rather than solving a global "batch" optimization for an entire week, the ADP model learns the value of locomotive positioning across time and space. Powell argued that traditional Integer Programming (IP) models are too rigid for environments characterized by stochastic delays and mechanical failures. By decomposing the problem into sequential decisions, the ADP framework estimates the long-term impact of current assignments via value function approximation. This work is widely regarded as a precursor to Multi-Agent Reinforcement Learning (MARL) in railway research, laying the groundwork for the autonomous, proactive agents utilized in this study.
+
+Further advancements by Vaidyanathan et al. \cite{Vaidyanathanetal2008a} proposed the Consist Flow Formulation (CFF) and the Hybrid Flow Formulation (HFF). CFF extends the Locomotive Flow Formulation (LFF) of Ahuja et al. \cite{Ahujaetal2005b} by treating locomotive "consists" ( pre-grouped sets of units ) as single commodities. While these structural decompositions improved the management of consist-level rules, they often fail to model individual unit-level constraints, such as specific fueling requirements or servicing feasibility. Table \ref{tab:lap_literature_summary} provides a chronological summary of these foundational contributions.
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|p{3.5cm}|p{2.5cm}|p{2cm}|p{3.5cm}|p{2.5cm}|}
+        \hline
+        \textbf{Authors} & \textbf{Problem Type} & \textbf{Planning} & \textbf{Objective Function} & \textbf{Method} \\ \hline
+        Florian et al. (1976) & Multiple units & Strategic & Min investment/maint. & Benders decomp. \\ \hline
+        Scholz (2000) & Multiple units & Strategic & Min fleet size & Heuristic \\ \hline
+        Powell et al. (2001) & Units and cars & Operational & Min operating costs & ADP \\ \hline
+        Ahuja et al. (2005) & Single unit & Strategic & Min operating costs & Goldberg-Tarjan \\ \hline
+        Vaidyanathan et al. (2008) & Single unit & Strategic & Min operating costs & Goldberg-Tarjan \\ \hline
+    \end{tabular}
+    \caption{Taxonomy of foundational Locomotive Assignment Problem (LAP) models (Adapted from Piu and Speranza, 2014).}
+    \label{tab:lap_literature_summary}
+\end{table}
+
+HERE TO CHECK ON GOOGLE GEMINI ( AI )
+\section{A Closer Look at Invalid Action Masking in Policy Gradient Algorithms}
+In the thesis , some actions are not feasible in practice: the agent can not pair a locomotive to a train because it is in maintenance or because it is already departed. Huang et all. \cite{DBLP:journals/corr/abs-2006-14171} analyzes the implication of the *masking invalid actions* technique which is largely used in DRL problems and in this thesis.
+DRL algorithms have been used for Real-Time Strategy games which are very complex because they are charactized by tons of constrains and rules and this means that sampling an action from the full discrete action space ends typically with an invalid action chosen. The most common approach for policy gradient algorithms is to apply invalid action masking \cite{Suttonetal2000} which consists of masking out invalid actions and then just samples from those actions that are valid. This paper tries to understand the performance of using this approach and tries to compare it with the invalid action penalty strategy which gives a negative reward for invalid actions ( the agent learns to increase the reward so it will automatically discard invalid actions ).
+
+EXPLAIN THE INVALID ACTION MASKING TECHNIQUE ( second page pdf )
 
 \begin{figure}[H]
 \centering

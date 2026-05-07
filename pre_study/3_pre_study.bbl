@@ -95,4 +95,64 @@ Yujin Tang and David Ha.
 \newblock The sensory neuron as a transformer: Permutation-invariant neural networks for reinforcement learning.
 \newblock {\em CoRR}, abs/2109.02869, 2021.
 
+\bibitem{10.1371/journal.pone.0328399}
+Yihan Liu, Jieping Wu, and Qiaoyu Wu.
+\newblock Research on optimization of c4 repair operation of harmony electric locomotive based on preventive maintenance.
+\newblock {\em PLOS ONE}, 20(7):1--22, 07 2025.
+
+\bibitem{Huetal2021}
+Dong Hu, Zhong Ouyang, Qiang Chen, and Hui Fan.
+\newblock Optimization method of special vehicle maintenance strategy based on reliability and cost-effectiveness ratio.
+\newblock {\em Military Automation}, 40(7):72--77, 2021.
+
+\bibitem{Zhuetal2021}
+Hua-yuan Zhu, Jun-liang Li, Li-ming Wang, Zheng Wang, and Jian-chao Liu.
+\newblock Reliability and maintenance cost evaluation of long-period service system.
+\newblock {\em Modern Defense Technology}, 49(2):86--94, 2021.
+
+\bibitem{Dongetal2020}
+Hangyu Dong, Qinming Liu, Chunming Ye, and Wenyi Liu.
+\newblock Periodic preventive maintenance optimization and a model for high-speed rail brake based on the limitation of reliability.
+\newblock {\em Journal of University of Shanghai for Science and Technology}, 42(4):384--389, 2020.
+
+\bibitem{Piuetal2014}
+F.~Piu and M.~G. Speranza.
+\newblock The locomotive assignment problem: a survey on optimization models.
+\newblock {\em International Transactions in Operational Research}, 21(3):327--352, 2014.
+
+\bibitem{Ahujaetal2005b}
+Ravindra~K. Ahuja, Jian Liu, James~B. Orlin, Dushyant Sharma, and Larry~A. Shughart.
+\newblock A multi-exchange neighborhood search algorithm for the locomotive assignment problem.
+\newblock {\em Operations Research}, 53(6):903--914, 2005.
+
+\bibitem{Vaidyanathanetal2008a}
+Bharath Vaidyanathan, Ravindra~K. Ahuja, and James~B. Orlin.
+\newblock A resource-directive decomposition approach for the locomotive assignment problem.
+\newblock {\em Operations Research}, 56(2):420--432, 2008.
+
+\bibitem{Florianetal1976}
+Michael Florian, G.~Bushell, J.~Ferland, G.~Guérin, and L.~Stewart.
+\newblock The engine scheduling problem in a railway network.
+\newblock {\em INFOR: Information Systems and Operational Research}, 14(2):121--138, 1976.
+
+\bibitem{Scholz2000}
+Andreas Scholz.
+\newblock Locomotive scheduling with maintenance constraints at the swedish state railways.
+\newblock {\em International Transactions in Operational Research}, 7(4-5):329--350, 2000.
+
+\bibitem{Powelletal2001}
+Warren~B. Powell, Katerina Papadaki, and Michael~K. Spivey.
+\newblock A multiagent, context-specific approach to the locomotive assignment problem.
+\newblock {\em Transportation Science}, 35(4):329--358, 2001.
+
+\bibitem{DBLP:journals/corr/abs-2006-14171}
+Shengyi Huang and Santiago Onta{\~{n}}{\'{o}}n.
+\newblock A closer look at invalid action masking in policy gradient algorithms.
+\newblock {\em CoRR}, abs/2006.14171, 2020.
+
+\bibitem{Suttonetal2000}
+Richard~S. Sutton, David~A. McAllester, Satinder~P. Singh, and Yishay Mansour.
+\newblock Policy gradient methods for reinforcement learning with function approximation.
+\newblock In {\em Advances in Neural Information Processing Systems (NIPS)}, pages 1057--1063, 2000.
+
 \end{thebibliography}
