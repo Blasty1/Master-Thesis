@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  7 MAY 2026 18:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.21)  12 MAY 2026 13:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -363,11 +363,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count304
 \l__pdf_internal_box=\box60
-) (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux
-
-LaTeX Warning: Label `fig:ReviewOfResults' multiply defined.
-
-)
+) (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux)
 \openout1 = `3_pre_study.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
@@ -452,260 +448,262 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png, id=21, 704.6325pt x 343.2825pt>
-File: ../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png Graphic file (type png)
-<use ../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png>
-Package pdftex.def Info: ../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png  used on input line 62.
-(pdftex.def)             Requested size: 418.25555pt x 203.76585pt.
+Underfull \hbox (badness 1168) in paragraph at lines 54--54
+\OT1/cmr/m/n/10.95 to-tal) ac-cord-ing to Ahuja et al.
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 55--55
+\OT1/cmr/m/n/10.95 axles) ac-cord-ing to Ahuja et al.
+ []
+
+
+Underfull \hbox (badness 1189) in paragraph at lines 57--57
+[]\OT1/cmr/m/n/10.95 Heterogeneous (In-ter-modal, au-to-
+ []
+
+
+Overfull \hbox (44.53575pt too wide) in paragraph at lines 49--60
+ [][] 
+ []
+
 
 
 [2]
-Overfull \hbox (8.78845pt too wide) in paragraph at lines 77--78
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\OT1/cmr/m/n/10 Min in-vest-men-t/-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\OT1/cmr/m/n/10 Benders de-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--82
+[]\OT1/cmr/m/n/10 Goldberg-
+ []
+
+
+Underfull \hbox (badness 6592) in paragraph at lines 83--83
+[]\OT1/cmr/m/n/10 Vaidyanathan et al.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--83
+[]\OT1/cmr/m/n/10 Goldberg-
+ []
+
+
+Overfull \hbox (40.083pt too wide) in paragraph at lines 76--85
+ [][] 
+ []
+
+
+
+[3]
+
+[4]
+<../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png, id=69, 704.6325pt x 343.2825pt>
+File: ../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png Graphic file (type png)
+<use ../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png>
+Package pdftex.def Info: ../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png  used on input line 116.
+(pdftex.def)             Requested size: 418.25555pt x 203.76585pt.
+
+Overfull \hbox (8.78845pt too wide) in paragraph at lines 131--132
 \OT1/cmr/m/n/10.95 A Markov pro-cess con-sti-tutes a mem-o-ry-less stochas-tic se-quence of ran-dom states $\OML/cmm/m/it/10.95 S[]; S[]; [] $
  []
 
 
 
-[3 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png>]
+[5 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/Agent-environment-interaction-in-Markov-decision-process.png>]
 
-[4]
-Overfull \hbox (4.17477pt too wide) in paragraph at lines 142--143
+[6]
+Overfull \hbox (4.17477pt too wide) in paragraph at lines 196--197
 []\OT1/cmr/m/it/10.95 Enhanced Con-ver-gence Prop-er-ties: \OT1/cmr/m/n/10.95 The pol-icy up-date fol-lows the gra-di-ent smoothly,
  []
 
 
 
-[5]
-<../images/pre_study/PolicyGradientAlgorithms.png, id=82, 826.58812pt x 283.55937pt>
+[7]
+<../images/pre_study/PolicyGradientAlgorithms.png, id=111, 826.58812pt x 283.55937pt>
 File: ../images/pre_study/PolicyGradientAlgorithms.png Graphic file (type png)
 <use ../images/pre_study/PolicyGradientAlgorithms.png>
-Package pdftex.def Info: ../images/pre_study/PolicyGradientAlgorithms.png  used on input line 176.
+Package pdftex.def Info: ../images/pre_study/PolicyGradientAlgorithms.png  used on input line 230.
 (pdftex.def)             Requested size: 418.25555pt x 143.48407pt.
 
 
-[6]
-
-[7 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PolicyGradientAlgorithms.png>]
-
 [8]
-Overfull \hbox (1.89662pt too wide) in paragraph at lines 248--249
+
+[9 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PolicyGradientAlgorithms.png>]
+
+[10]
+Overfull \hbox (1.89662pt too wide) in paragraph at lines 302--303
 \OT1/cmr/m/n/10.95 i-cal re-turn and the base-line ex-pected re-turn es-ti-mated by the critic: $\OML/cmm/m/it/10.95 A\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s[]; a[]\OT1/cmr/m/n/10.95 ) =
  []
 
 
 
-[9]
+[11]
 
-[10]
-<../images/pre_study/TRPO_algorithm.png, id=148, 644.4075pt x 667.49374pt>
+[12]
+<../images/pre_study/TRPO_algorithm.png, id=176, 644.4075pt x 667.49374pt>
 File: ../images/pre_study/TRPO_algorithm.png Graphic file (type png)
 <use ../images/pre_study/TRPO_algorithm.png>
-Package pdftex.def Info: ../images/pre_study/TRPO_algorithm.png  used on input line 323.
+Package pdftex.def Info: ../images/pre_study/TRPO_algorithm.png  used on input line 377.
 (pdftex.def)             Requested size: 418.25555pt x 433.2547pt.
 
 
-[11]
+[13]
 
-[12 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/TRPO_algorithm.png>]
-<../images/pre_study/PPO_algorithm.png, id=171, 647.41875pt x 435.6275pt>
+[14 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/TRPO_algorithm.png>]
+<../images/pre_study/PPO_algorithm.png, id=200, 647.41875pt x 435.6275pt>
 File: ../images/pre_study/PPO_algorithm.png Graphic file (type png)
 <use ../images/pre_study/PPO_algorithm.png>
-Package pdftex.def Info: ../images/pre_study/PPO_algorithm.png  used on input line 347.
+Package pdftex.def Info: ../images/pre_study/PPO_algorithm.png  used on input line 401.
 (pdftex.def)             Requested size: 418.25555pt x 281.4329pt.
 
 
-[13 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PPO_algorithm.png>]
+[15 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PPO_algorithm.png>]
 
-[14]
-<../images/pre_study/ActorCriticNetworkArchitecture.png, id=190, 1308.89pt x 385.44pt>
+[16]
+<../images/pre_study/ActorCriticNetworkArchitecture.png, id=218, 1308.89pt x 385.44pt>
 File: ../images/pre_study/ActorCriticNetworkArchitecture.png Graphic file (type png)
 <use ../images/pre_study/ActorCriticNetworkArchitecture.png>
-Package pdftex.def Info: ../images/pre_study/ActorCriticNetworkArchitecture.png  used on input line 387.
+Package pdftex.def Info: ../images/pre_study/ActorCriticNetworkArchitecture.png  used on input line 441.
 (pdftex.def)             Requested size: 418.25555pt x 123.16687pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--406
+Underfull \hbox (badness 10000) in paragraph at lines 460--460
 []\OT1/cmr/bx/n/10.95 Observation
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 407--407
+Underfull \hbox (badness 10000) in paragraph at lines 461--461
 []\OT1/cmr/bx/n/10.95 Maintenance
  []
 
 
-Overfull \hbox (16.08301pt too wide) in paragraph at lines 400--410
+Overfull \hbox (16.08301pt too wide) in paragraph at lines 454--464
  [][] 
  []
 
 
 
-[15 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ActorCriticNetworkArchitecture.png>]
+[17 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ActorCriticNetworkArchitecture.png>]
 
-[16]
-Overfull \hbox (4.45581pt too wide) in paragraph at lines 438--439
+[18]
+Overfull \hbox (4.45581pt too wide) in paragraph at lines 492--493
 []\OT1/cmr/m/it/10.95 Usage Costs\OT1/cmr/m/n/10.95 : Pro-por-tional to the to-tal num-ber of ac-tive rolling stock units $[][] \OML/cmm/m/it/10.95 ^^Q[]$\OT1/cmr/m/n/10.95 . 
  []
 
-<../images/pre_study/2ActorCriticNetworkArchitecture.png, id=213, 841.1425pt x 554.07pt>
+<../images/pre_study/2ActorCriticNetworkArchitecture.png, id=241, 841.1425pt x 554.07pt>
 File: ../images/pre_study/2ActorCriticNetworkArchitecture.png Graphic file (type png)
 <use ../images/pre_study/2ActorCriticNetworkArchitecture.png>
-Package pdftex.def Info: ../images/pre_study/2ActorCriticNetworkArchitecture.png  used on input line 445.
+Package pdftex.def Info: ../images/pre_study/2ActorCriticNetworkArchitecture.png  used on input line 499.
 (pdftex.def)             Requested size: 418.25555pt x 275.51253pt.
 
 
-[17 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/2ActorCriticNetworkArchitecture.png>]
+[19 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/2ActorCriticNetworkArchitecture.png>]
 
-[18]
-<../images/pre_study/LSTM-PPO-Algorithm.png, id=240, 526.96875pt x 658.46pt>
+[20]
+<../images/pre_study/LSTM-PPO-Algorithm.png, id=269, 526.96875pt x 658.46pt>
 File: ../images/pre_study/LSTM-PPO-Algorithm.png Graphic file (type png)
 <use ../images/pre_study/LSTM-PPO-Algorithm.png>
-Package pdftex.def Info: ../images/pre_study/LSTM-PPO-Algorithm.png  used on input line 485.
+Package pdftex.def Info: ../images/pre_study/LSTM-PPO-Algorithm.png  used on input line 539.
 (pdftex.def)             Requested size: 418.25555pt x 522.64934pt.
 
 
-[19]
+[21]
 
-[20 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/LSTM-PPO-Algorithm.png>]
-<../images/pre_study/ActivityAndMaintenanceHorizon.png, id=257, 502.87875pt x 277.035pt>
+[22 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/LSTM-PPO-Algorithm.png>]
+<../images/pre_study/ActivityAndMaintenanceHorizon.png, id=285, 502.87875pt x 277.035pt>
 File: ../images/pre_study/ActivityAndMaintenanceHorizon.png Graphic file (type png)
 <use ../images/pre_study/ActivityAndMaintenanceHorizon.png>
-Package pdftex.def Info: ../images/pre_study/ActivityAndMaintenanceHorizon.png  used on input line 498.
+Package pdftex.def Info: ../images/pre_study/ActivityAndMaintenanceHorizon.png  used on input line 552.
 (pdftex.def)             Requested size: 418.25555pt x 230.41666pt.
 
 
-[21 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ActivityAndMaintenanceHorizon.png>]
+[23 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ActivityAndMaintenanceHorizon.png>]
 
-[22]
-<../images/pre_study/HeuristicRules.png, id=279, 619.31375pt x 511.9125pt>
+[24]
+<../images/pre_study/HeuristicRules.png, id=308, 619.31375pt x 511.9125pt>
 File: ../images/pre_study/HeuristicRules.png Graphic file (type png)
 <use ../images/pre_study/HeuristicRules.png>
-Package pdftex.def Info: ../images/pre_study/HeuristicRules.png  used on input line 543.
+Package pdftex.def Info: ../images/pre_study/HeuristicRules.png  used on input line 597.
 (pdftex.def)             Requested size: 418.25555pt x 345.73692pt.
 
 
-[23]
-
-[24 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/HeuristicRules.png>]
-
 [25]
-<../images/pre_study/ReviewOfResults.png, id=312, 460.72125pt x 335.2525pt>
+
+[26 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/HeuristicRules.png>]
+
+[27]
+<../images/pre_study/ReviewOfResults.png, id=340, 460.72125pt x 335.2525pt>
 File: ../images/pre_study/ReviewOfResults.png Graphic file (type png)
 <use ../images/pre_study/ReviewOfResults.png>
-Package pdftex.def Info: ../images/pre_study/ReviewOfResults.png  used on input line 601.
+Package pdftex.def Info: ../images/pre_study/ReviewOfResults.png  used on input line 655.
 (pdftex.def)             Requested size: 418.25555pt x 304.34872pt.
 
 
-[26]
+[28]
 
-[27 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ReviewOfResults.png>]
-<../images/pre_study/PIArchitecture.png, id=335, 943.525pt x 331.2375pt>
+[29 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/ReviewOfResults.png>]
+<../images/pre_study/PIArchitecture.png, id=362, 943.525pt x 331.2375pt>
 File: ../images/pre_study/PIArchitecture.png Graphic file (type png)
 <use ../images/pre_study/PIArchitecture.png>
-Package pdftex.def Info: ../images/pre_study/PIArchitecture.png  used on input line 618.
+Package pdftex.def Info: ../images/pre_study/PIArchitecture.png  used on input line 671.
 (pdftex.def)             Requested size: 418.25555pt x 146.83667pt.
 
 
-[28 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PIArchitecture.png>]
-
-[29]
-
-[30]
-Underfull \hbox (badness 1168) in paragraph at lines 673--673
-\OT1/cmr/m/n/10.95 to-tal) ac-cord-ing to Ahuja et al.
- []
-
-
-Underfull \hbox (badness 1014) in paragraph at lines 674--674
-\OT1/cmr/m/n/10.95 axles) ac-cord-ing to Ahuja et al.
- []
-
-
-Underfull \hbox (badness 1189) in paragraph at lines 676--676
-[]\OT1/cmr/m/n/10.95 Heterogeneous (In-ter-modal, au-to-
- []
-
-
-Overfull \hbox (44.53575pt too wide) in paragraph at lines 668--679
- [][] 
- []
-
-
+[30 </Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/../images/pre_study/PIArchitecture.png>]
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 698--698
-[]\OT1/cmr/m/n/10 Min in-vest-men-t/-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 698--698
-[]\OT1/cmr/m/n/10 Benders de-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 701--701
-[]\OT1/cmr/m/n/10 Goldberg-
- []
-
-
-Underfull \hbox (badness 6592) in paragraph at lines 702--702
-[]\OT1/cmr/m/n/10 Vaidyanathan et al.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 702--702
-[]\OT1/cmr/m/n/10 Goldberg-
- []
-
-
-Overfull \hbox (40.083pt too wide) in paragraph at lines 695--704
- [][] 
- []
-
-
 
 [32]
-File: ../images/pre_study/ReviewOfResults.png Graphic file (type png)
-<use ../images/pre_study/ReviewOfResults.png>
-Package pdftex.def Info: ../images/pre_study/ReviewOfResults.png  used on input line 717.
-(pdftex.def)             Requested size: 418.25555pt x 304.34872pt.
+
+[33]
+
+[34]
+Overfull \hbox (8.61398pt too wide) in paragraph at lines 800--801
+[]\OT1/cmr/m/it/10.95 Clipped Double-Q Learn-ing: \OT1/cmr/m/n/10.95 The agent main-tains two in-de-pen-dent crit-ics, $(\OML/cmm/m/it/10.95 Q[]; Q[]\OT1/cmr/m/n/10.95 )$,
+ []
 
 
-[33] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl
-Underfull \hbox (badness 1577) in paragraph at lines 19--22
+
+[35]
+
+[36] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.bbl
+Underfull \hbox (badness 1577) in paragraph at lines 49--52
 []\OT1/cmr/m/n/10.95 Volodymyr Mnih, Ko-ray Kavukcuoglu, David Sil-ver, Alex Graves, Ioan-nis
  []
 
 
 
-[34]
+[37]
 
-[35])
+[38])
 
-[36] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux)
+[39] (/Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `3_pre_study.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 14715 strings out of 474662
- 257501 string characters out of 5751108
- 807788 words of memory out of 5000000
- 37409 multiletter control sequences out of 15000+600000
- 569850 words of font info for 79 fonts, out of 8000000 for 9000
+ 14748 strings out of 474662
+ 257900 string characters out of 5751108
+ 806788 words of memory out of 5000000
+ 37419 multiletter control sequences out of 15000+600000
+ 570471 words of font info for 81 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 108i,11n,107p,10971b,583s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,11n,107p,10971b,584s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/brunobryan/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf (36 pages, 1634347 bytes).
+Output written on /Users/brunobryan/Desktop/Programmazione/Master-Thesis/Pre_study/3_pre_study.pdf (39 pages, 1648559 bytes).
 PDF statistics:
- 591 PDF objects out of 1000 (max. 8388607)
- 480 compressed objects within 5 object streams
- 184 named destinations out of 1000 (max. 500000)
- 200 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 638 PDF objects out of 1000 (max. 8388607)
+ 524 compressed objects within 6 object streams
+ 205 named destinations out of 1000 (max. 500000)
+ 216 words of extra memory for PDF output out of 10000 (max. 10000000)
 

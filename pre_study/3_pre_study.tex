@@ -31,6 +31,60 @@ This section provides a critical analysis of the literature and technical report
     \item \textbf{Core Summary:} A brief overview of the research objectives and findings of the paper.
     \item \textbf{Technical Contribution:} An explanation of how the paper's insights directly influenced the development of this thesis.
 \end{itemize}
+\section{Foundations of the Locomotive Assignment Problem (LAP)}
+
+The Locomotive Assignment Problem (LAP) constitutes a fundamental challenge in railway logistics, involving the optimal allocation of a motive power fleet to a predetermined set of scheduled services while satisfying complex operational constraints and minimizing aggregate expenditures. This review is primarily informed by the seminal survey of Piu and Speranza (2014) \cite{Piuetal2014}, which provides a taxonomy of algorithms and mathematical programming approaches to the problem. Historically, much of the research in this domain originated in North America, which manages one of the most extensive railroad infrastructures globally (omprising approximately 140,000 miles ) and represents one of the most cost-efficient freight systems in existence. However, in the decade since the publication of Piu and Speranza's survey, significant contributions have emerged from other global regions, reflecting the growing universal demand for operational efficiency.
+
+In accordance with standard hierarchical planning frameworks, locomotive scheduling is analyzed across three distinct levels based on the planning horizon:
+\begin{itemize}
+    \item \textbf{Strategic Level:} Focuses on long-term fleet sizing and composition. At this stage, individual locomotive identifiers (IDs) are neglected, and the train schedule is considered immutable, typically disregarding delays or stochastic disruptions.
+    \item \textbf{Tactical and Operational Levels:} These levels involve a lower degree of abstraction, necessitating the assignment of specific locomotive units to services. These models must account for real-time constraints, such as fueling schedules and maintenance intervals, while maintaining robustness against operational disruptions and variance in train schedules.
+\end{itemize}
+
+A critical distinction must be drawn between passenger and freight rail operations, as the latter presents a significantly higher degree of combinatorial complexity. The operational disparities between these two systems are synthesized in Table \ref{tab:difference_between_freight_and_passenger_trains}.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|p{3.5cm}|p{5.5cm}|p{6cm}|}
+        \hline
+        \textbf{Feature} & \textbf{Passenger Trains} & \textbf{Freight Trains} \\ \hline
+        \textbf{Scheduling Logic} & Fixed, time-sensitive schedules & Tonnage-based or unscheduled departures \\ \hline
+        \textbf{Network Priority} & High (Time-critical priority) & Lower (Subject to delays/sidings) \\ \hline
+        \textbf{Motive Power} & 1--2 active locomotives & 2--3x more active units (up to 12 total) according to Ahuja et al. (2005b) \cite{Ahujaetal2005b} \\ \hline
+        \textbf{Tractive Effort} & Standard axle configurations & High active axle count (up to 24 axles) according to Ahuja et al. (2005b) \cite{Ahujaetal2005b} \\ \hline
+        \textbf{Tonnage Variance} & Low; predetermined & High; high variance across service types \\ \hline
+        \textbf{Consist Diversity} & Homogeneous/Standardized & Heterogeneous (Intermodal, automotive, etc.) \cite{Vaidyanathanetal2008a} \\ \hline
+        \textbf{Operational Complexity} & Low connection constraints & High (Consist management, compatibility) \\ \hline
+    \end{tabular}
+    \caption{Comparative analysis of operational and physical characteristics between passenger and freight rail systems.}
+    \label{tab:difference_between_freight_and_passenger_trains}
+\end{table}
+
+LAP formulations can be classified according to their objective functions (e.g., cost minimization or fleet utilization) or their planning depth. A primary distinction is made between \textit{single-locomotive models}, where a service is powered by a single unit, and \textit{multiple-locomotive models}. The latter, which is the focus of this thesis, represents a significantly more complex problem where a train's power requirements are met by a combination of potentially heterogeneous units. 
+
+The seminal research by Florian et al. (1976) \cite{Florianetal1976} was among the first to address multiple locomotive requirements, aiming to minimize capital investment and maintenance costs over a long-term horizon. However, the computational limitations of that era restricted the scalability of their optimization techniques. Subsequently, Scholz (2000) \cite{Scholz2000} examined the Swedish railway system—the same context explored in this research—aiming to satisfy a schedule within defined departure windows using a minimal fleet size. Scholz utilized Gantt charts for visualization, where rectangular blocks represent trip durations, a methodology mirrored in the implementation of this thesis. Notably, Scholz is credited with integrating preventive maintenance into scheduling through Lagrangian relaxation, though this method is often limited in its ability to scale to high-dimensional, real-time problems.
+
+A paradigm shift occurred with the introduction of the Approximate Dynamic Programming (ADP) framework by Powell et al. (2001) \cite{Powelletal2001}. This represented a transition from traditional mathematical programming toward learning-based heuristics. Rather than solving a global "batch" optimization for an entire week, the ADP model learns the value of locomotive positioning across time and space. Powell argued that traditional Integer Programming (IP) models are too rigid for environments characterized by stochastic delays and mechanical failures. By decomposing the problem into sequential decisions, the ADP framework estimates the long-term impact of current assignments via value function approximation. This work is widely regarded as a precursor to Multi-Agent Reinforcement Learning (MARL) in railway research, laying the groundwork for the autonomous, proactive agents utilized in this study.
+
+Further advancements by Vaidyanathan et al. \cite{Vaidyanathanetal2008a} proposed the Consist Flow Formulation (CFF) and the Hybrid Flow Formulation (HFF). CFF extends the Locomotive Flow Formulation (LFF) of Ahuja et al. \cite{Ahujaetal2005b} by treating locomotive "consists" ( pre-grouped sets of units ) as single commodities. While these structural decompositions improved the management of consist-level rules, they often fail to model individual unit-level constraints, such as specific fueling requirements or servicing feasibility. Table \ref{tab:lap_literature_summary} provides a chronological summary of these foundational contributions.
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|p{3.5cm}|p{2.5cm}|p{2cm}|p{3.5cm}|p{2.5cm}|}
+        \hline
+        \textbf{Authors} & \textbf{Problem Type} & \textbf{Planning} & \textbf{Objective Function} & \textbf{Method} \\ \hline
+        Florian et al. (1976) & Multiple units & Strategic & Min investment/maint. & Benders decomp. \\ \hline
+        Scholz (2000) & Multiple units & Strategic & Min fleet size & Heuristic \\ \hline
+        Powell et al. (2001) & Units and cars & Operational & Min operating costs & ADP \\ \hline
+        Ahuja et al. (2005) & Single unit & Strategic & Min operating costs & Goldberg-Tarjan \\ \hline
+        Vaidyanathan et al. (2008) & Single unit & Strategic & Min operating costs & Goldberg-Tarjan \\ \hline
+    \end{tabular}
+    \caption{Taxonomy of foundational Locomotive Assignment Problem (LAP) models (Adapted from Piu and Speranza, 2014).}
+    \label{tab:lap_literature_summary}
+\end{table}
 
 \section{Fundamentals of Reinforcement Learning}
 
@@ -603,7 +657,6 @@ Most significantly, Ying et al. highlight the inherent difficulty of achieving c
 \label{fig:ReviewOfResults}
 \end{figure}
 
-NEW FROM HERE for supervisor check 
 
 \section{The Sensory Neuron as a Transformer: Permutation-Invariant Neural Networks for Reinforcement Learning}
 
@@ -650,76 +703,110 @@ While Liu et al. provide a comprehensive analysis of complex intra-system relati
 
 Finally, although Liu et al. successfully employ an improvement factor \cite{Dongetal2020} to model post-maintenance condition restoration, a similar mechanism was omitted from this research. This limitation arises from the reliance on synthetic data; lacking complete access to historical maintenance schedules and empirical degradation profiles, applying a rigorous improvement factor was not feasible within the scope of this project.
 
-\section{Foundations of the Locomotive Assignment Problem (LAP)}
 
-The Locomotive Assignment Problem (LAP) constitutes a fundamental challenge in railway logistics, involving the optimal allocation of a motive power fleet to a predetermined set of scheduled services while satisfying complex operational constraints and minimizing aggregate expenditures. This review is primarily informed by the seminal survey of Piu and Speranza (2014) \cite{Piuetal2014}, which provides a taxonomy of algorithms and mathematical programming approaches to the problem. Historically, much of the research in this domain originated in North America, which manages one of the most extensive railroad infrastructures globally (omprising approximately 140,000 miles ) and represents one of the most cost-efficient freight systems in existence. However, in the decade since the publication of Piu and Speranza's survey, significant contributions have emerged from other global regions, reflecting the growing universal demand for operational efficiency.
+\section{A Closer Look at Invalid Action Masking in Policy Gradient Algorithms}
 
-In accordance with standard hierarchical planning frameworks, locomotive scheduling is analyzed across three distinct levels based on the planning horizon:
+In the context of this thesis, several actions within the state space are operationally infeasible; for instance, a locomotive cannot be assigned to a service if it is currently undergoing maintenance or has already departed the terminal. Huang et al. \cite{DBLP:journals/corr/abs-2006-14171} provide a comprehensive analysis of \textit{invalid action masking}, a technique widely utilized in Deep Reinforcement Learning (DRL) to manage such constraints, and one that serves as a cornerstone of the implementation presented here.
+
+DRL algorithms applied to complex environments, such as Real-Time Strategy (RTS) games or industrial logistics, often contend with high-dimensional discrete action spaces characterized by numerous rules and constraints. In such settings, random sampling from the full action space frequently results in the selection of invalid actions. The standard mitigation strategy for policy gradient algorithms involves invalid action masking \cite{Suttonetal2000}, which effectively filters out prohibited actions, allowing the agent to sample exclusively from the valid subset. Huang et al. evaluate the efficacy of this approach in comparison to the \textit{invalid action penalty} strategy, where the agent receives a negative reward for selecting infeasible actions to discourage such behavior.
+
+The framework proposed by Huang et al. \cite{DBLP:journals/corr/abs-2006-14171} aligns with the architecture utilized in this research, where the policy is defined by a neural network outputting unnormalized scores, or \textit{logits}. These logits are converted into a probability distribution via a softmax function. Consider a simplified action space $\mathcal{A} = \{a_0, a_1, a_2, a_3\}$ and a state $s_0$. The parameterized policy $\pi_{\theta}$—where $\theta$ corresponds to the logits $[l_0, l_1, l_2, l_3]$—is computed as follows:
+
+\begin{align}
+\pi_{\theta}(\cdot|s_{0}) &= [\pi_{\theta}(a_{0}|s_{0}), \pi_{\theta}(a_{1}|s_{0}), \pi_{\theta}(a_{2}|s_{0}), \pi_{\theta}(a_{3}|s_{0})] \nonumber \\
+&= \text{softmax}([l_{0}, l_{1}, l_{2}, l_{3}])\nonumber \\
+&= [0.25, 0.25, 0.25, 0.25]
+\end{align}
+where the probability of action $a_i$ is defined by:
+\begin{equation}
+\pi_{\theta}(a_{i}|s_{0}) = \frac{\exp(l_{i})}{\sum_{j} \exp(l_{j})}
+\end{equation}
+
+If an action is sampled (e.g., $a_0$) while another action is invalid (e.g., $a_2$), the standard policy gradient is derived as:
+\begin{align}
+g_{\text{policy}} &= \mathbb{E}_{\tau} \left[ \nabla_{\theta} \sum_{t=0}^{T-1} \log \pi_{\theta}(a_t|s_t) G_t \right] \nonumber \\
+&= \nabla_{\theta} \log \pi_{\theta}(a_0|s_0) G_0 \nonumber \\
+&= [0.75, -0.25, -0.25, -0.25]
+\end{align}
+based on the derivative of the softmax function:
+\begin{equation}
+(\nabla_{\theta} \log \text{softmax}(\theta)_j)_i = 
+\begin{cases} 
+1 - \pi_{\theta}(a_j|s) & \text{if } i = j \\ 
+-\pi_{\theta}(a_i|s) & \text{otherwise} 
+\end{cases}
+\end{equation}
+
+The invalid action masking framework facilitates the sampling of valid actions by replacing the logits of invalid actions with a large negative constant $M$ (e.g., $M = -1 \times 10^{9}$). This ensures that the post-softmax probability of invalid actions effectively approaches zero:
+\begin{align}
+\pi_{\theta}'(\cdot|s_{0}) &= \text{softmax}(\text{mask}([l_{0}, l_{1}, l_{2}, l_{3}])) \nonumber \\
+&= \text{softmax}([l_{0}, l_{1}, M, l_{3}]) \nonumber \\
+&= [\pi_{\theta}'(a_{0}|s_{0}), \pi_{\theta}'(a_{1}|s_{0}), \epsilon, \pi_{\theta}'(a_{3}|s_{0})] \nonumber \\
+&\approx [0.33, 0.33, 0.00, 0.33]
+\end{align}
+
+Upon completion of the trajectory, the policy is updated using the \textit{invalid action policy gradient}:
+\begin{align}
+g_{\text{invalid action policy}} &= \mathbb{E}_{\tau} \left[ \nabla_{\theta} \sum_{t=0}^{T-1} \log \pi'_{\theta}(a_t|s_t)G_t \right]  \nonumber \\
+&= \nabla_{\theta} \log \pi'_{\theta}(a_0|s_0)G_0 \nonumber \\
+&= [0.67, -0.33, 0.00, -0.33]
+\end{align}
+
+Significantly, this framework does not merely renormalize the distribution; it fundamentally forces the policy gradient of invalid actions to zero, preventing them from influencing the parameter updates. 
+
+Huang et al. compare four distinct strategies:
 \begin{itemize}
-    \item \textbf{Strategic Level:} Focuses on long-term fleet sizing and composition. At this stage, individual locomotive identifiers (IDs) are neglected, and the train schedule is considered immutable, typically disregarding delays or stochastic disruptions.
-    \item \textbf{Tactical and Operational Levels:} These levels involve a lower degree of abstraction, necessitating the assignment of specific locomotive units to services. These models must account for real-time constraints, such as fueling schedules and maintenance intervals, while maintaining robustness against operational disruptions and variance in train schedules.
+    \item Invalid Action Penalty: A negative reward is assigned for sampling infeasible actions \cite{dietterich2000hierarchical}.
+    \item Invalid Action Masking: The distribution is masked to ensure only valid actions are available for sampling and gradient calculation.
+    \item Naive Invalid Action Masking: The standard probability distribution is calculated, but the gradient for invalid actions is manually set to zero.
+    \item Masking Removed: Masking is applied during training but disabled during evaluation to test policy robustness.
 \end{itemize}
 
-A critical distinction must be drawn between passenger and freight rail operations, as the latter presents a significantly higher degree of combinatorial complexity. The operational disparities between these two systems are synthesized in Table \ref{tab:difference_between_freight_and_passenger_trains}.
+The empirical results of the study conclude that:
+\begin{itemize}
+    \item Invalid action masking scales effectively to complex, high-dimensional tasks.
+    \item Invalid action penalty fails to scale, as the agent struggles to explore valid regions of the state space.
+    \item Naive invalid action masking causes the Kullback-Leibler (KL) divergence to explode, leading to training instability.
+    \item Masking removed allows the agent to maintain performance to a significant extent, suggesting the agent learns the underlying constraints.
+\end{itemize}
 
-\begin{table}[H]
-    \centering
-    \renewcommand{\arraystretch}{1.3}
-    \begin{tabular}{|p{3.5cm}|p{5.5cm}|p{6cm}|}
-        \hline
-        \textbf{Feature} & \textbf{Passenger Trains} & \textbf{Freight Trains} \\ \hline
-        \textbf{Scheduling Logic} & Fixed, time-sensitive schedules & Tonnage-based or unscheduled departures \\ \hline
-        \textbf{Network Priority} & High (Time-critical priority) & Lower (Subject to delays/sidings) \\ \hline
-        \textbf{Motive Power} & 1--2 active locomotives & 2--3x more active units (up to 12 total) according to Ahuja et al. (2005b) \cite{Ahujaetal2005b} \\ \hline
-        \textbf{Tractive Effort} & Standard axle configurations & High active axle count (up to 24 axles) according to Ahuja et al. (2005b) \cite{Ahujaetal2005b} \\ \hline
-        \textbf{Tonnage Variance} & Low; predetermined & High; high variance across service types \\ \hline
-        \textbf{Consist Diversity} & Homogeneous/Standardized & Heterogeneous (Intermodal, automotive, etc.) \cite{Vaidyanathanetal2008a} \\ \hline
-        \textbf{Operational Complexity} & Low connection constraints & High (Consist management, compatibility) \\ \hline
-    \end{tabular}
-    \caption{Comparative analysis of operational and physical characteristics between passenger and freight rail systems.}
-    \label{tab:difference_between_freight_and_passenger_trains}
-\end{table}
+\section{Action Space Shaping in Deep Reinforcement Learning}
 
-LAP formulations can be classified according to their objective functions (e.g., cost minimization or fleet utilization) or their planning depth. A primary distinction is made between \textit{single-locomotive models}, where a service is powered by a single unit, and \textit{multiple-locomotive models}. The latter, which is the focus of this thesis, represents a significantly more complex problem where a train's power requirements are met by a combination of potentially heterogeneous units. 
+Kanervisto et al. \cite{Kanervisto2020} provide a formal framework for \textbf{Action Space Shaping}, the process of transforming the original action space of an environment $\mathcal{A}$ into a modified space $\mathcal{A}'$ to facilitate more efficient policy optimization. This paper is essential for addressing the "Exploration Bottleneck" that occurs when an agent must select a subset of assets from a large, discrete pool.
+The authors define action shaping as a mapping function $g: \mathcal{A}' \rightarrow \mathcal{A}$, where the agent learns a policy $\pi_{\theta}(a'|s)$ over the shaped space $\mathcal{A}'$. The fundamental motivation for this paper is the reduction of the search space cardinality. In many real-world environments, the raw action space $\mathcal{A}$ is combinatorial; for a set of $N$ assets where $k$ must be selected, the cardinality $| \mathcal{A} | = \binom{N}{k}$ grows exponentially with $N$. 
+This exponential growth leads to the Sparse Probability Problem: in a standard Categorical distribution, the probability of selecting the optimal combination $a^*$ by random exploration is:
+\begin{equation}
+P(\text{exploration success}) = \frac{1}{\binom{N}{k}}
+\end{equation}
+As $N$ increases, this probability approaches zero, rendering standard stochastic exploration (e.g., $\epsilon$-greedy or Entropy-based exploration) ineffective. Kanervisto et al. argue that by reshaping $\mathcal{A}$ into a continuous space $\mathcal{A}' = [0, 1]^N$, the agent can utilize the topology of the continuous space to "rank" assets, effectively transforming the search from a needle-in-a-haystack discrete problem into a smoother, gradient-friendly optimization.
+\\
+\textbf{Technical Contribution:} 
+The paper provides a mathematical justification for using Continuous Proxies for discrete decisions. Instead of the agent outputting a single discrete class, it outputs a vector of continuous weights $\mathbf{w} \in \mathbb{R}^N$. The mapping function $g(\mathbf{w})$ then converts these weights into a discrete action.
 
-The seminal research by Florian et al. (1976) \cite{Florianetal1976} was among the first to address multiple locomotive requirements, aiming to minimize capital investment and maintenance costs over a long-term horizon. However, the computational limitations of that era restricted the scalability of their optimization techniques. Subsequently, Scholz (2000) \cite{Scholz2000} examined the Swedish railway system—the same context explored in this research—aiming to satisfy a schedule within defined departure windows using a minimal fleet size. Scholz utilized Gantt charts for visualization, where rectangular blocks represent trip durations, a methodology mirrored in the implementation of this thesis. Notably, Scholz is credited with integrating preventive maintenance into scheduling through Lagrangian relaxation, though this method is often limited in its ability to scale to high-dimensional, real-time problems.
+Why is this paper needed? It addresses three critical failures in standard DRL:
+\begin{enumerate}
+    \item Gradient Thinning: In a large discrete space, the gradient $\nabla_{\theta} J(\theta)$ is computed over a massive Softmax output where most entries are near zero. This leads to vanishing gradients. Shaping concentrates the "probability mass" on relevant features.
+    \item Action Entanglement: In many systems, actions are not independent. Selecting "Locomotive A" might depend on the state of "Locomotive B." A shaped continuous space allows the network to learn relational "importance" scores rather than memorizing isolated discrete pairs.
+    \item Exploration Efficiency: By using a continuous distribution (e.g., Gaussian $\mathcal{N}(\mu, \sigma)$) over weights, the agent can explore "close" strategies by slightly perturbing $\mu$. In a discrete space, there is no concept of "closeness"; the distance between any two discrete actions is essentially binary.
+\end{enumerate}
 
-A paradigm shift occurred with the introduction of the Approximate Dynamic Programming (ADP) framework by Powell et al. (2001) \cite{Powelletal2001}. This represented a transition from traditional mathematical programming toward learning-based heuristics. Rather than solving a global "batch" optimization for an entire week, the ADP model learns the value of locomotive positioning across time and space. Powell argued that traditional Integer Programming (IP) models are too rigid for environments characterized by stochastic delays and mechanical failures. By decomposing the problem into sequential decisions, the ADP framework estimates the long-term impact of current assignments via value function approximation. This work is widely regarded as a precursor to Multi-Agent Reinforcement Learning (MARL) in railway research, laying the groundwork for the autonomous, proactive agents utilized in this study.
-
-Further advancements by Vaidyanathan et al. \cite{Vaidyanathanetal2008a} proposed the Consist Flow Formulation (CFF) and the Hybrid Flow Formulation (HFF). CFF extends the Locomotive Flow Formulation (LFF) of Ahuja et al. \cite{Ahujaetal2005b} by treating locomotive "consists" ( pre-grouped sets of units ) as single commodities. While these structural decompositions improved the management of consist-level rules, they often fail to model individual unit-level constraints, such as specific fueling requirements or servicing feasibility. Table \ref{tab:lap_literature_summary} provides a chronological summary of these foundational contributions.
-
-\begin{table}[H]
-    \centering
-    \small
-    \renewcommand{\arraystretch}{1.2}
-    \begin{tabular}{|p{3.5cm}|p{2.5cm}|p{2cm}|p{3.5cm}|p{2.5cm}|}
-        \hline
-        \textbf{Authors} & \textbf{Problem Type} & \textbf{Planning} & \textbf{Objective Function} & \textbf{Method} \\ \hline
-        Florian et al. (1976) & Multiple units & Strategic & Min investment/maint. & Benders decomp. \\ \hline
-        Scholz (2000) & Multiple units & Strategic & Min fleet size & Heuristic \\ \hline
-        Powell et al. (2001) & Units and cars & Operational & Min operating costs & ADP \\ \hline
-        Ahuja et al. (2005) & Single unit & Strategic & Min operating costs & Goldberg-Tarjan \\ \hline
-        Vaidyanathan et al. (2008) & Single unit & Strategic & Min operating costs & Goldberg-Tarjan \\ \hline
-    \end{tabular}
-    \caption{Taxonomy of foundational Locomotive Assignment Problem (LAP) models (Adapted from Piu and Speranza, 2014).}
-    \label{tab:lap_literature_summary}
-\end{table}
-
-HERE TO CHECK ON GOOGLE GEMINI ( AI )
-\section{A Closer Look at Invalid Action Masking in Policy Gradient Algorithms}
-In the thesis , some actions are not feasible in practice: the agent can not pair a locomotive to a train because it is in maintenance or because it is already departed. Huang et all. \cite{DBLP:journals/corr/abs-2006-14171} analyzes the implication of the *masking invalid actions* technique which is largely used in DRL problems and in this thesis.
-DRL algorithms have been used for Real-Time Strategy games which are very complex because they are charactized by tons of constrains and rules and this means that sampling an action from the full discrete action space ends typically with an invalid action chosen. The most common approach for policy gradient algorithms is to apply invalid action masking \cite{Suttonetal2000} which consists of masking out invalid actions and then just samples from those actions that are valid. This paper tries to understand the performance of using this approach and tries to compare it with the invalid action penalty strategy which gives a negative reward for invalid actions ( the agent learns to increase the reward so it will automatically discard invalid actions ).
-
-EXPLAIN THE INVALID ACTION MASKING TECHNIQUE ( second page pdf )
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{../images/pre_study/ReviewOfResults.png}
-\caption{Test of the actor-critic agent during the training process.Taken from (Ying et al., 2020 \cite{YING2020210}) }
-\label{fig:ReviewOfResults}
-\end{figure}
+By adopting the strategies in \cite{Kanervisto2020}, a system can ensure that the learning signal remains dense even when the physical requirements of the task (e.g., assigning specific units to specific trains) are highly complex and discrete.
 
 
+\section{Addressing Function Approximation Error in Actor-Critic Methods}
+Fujimoto et al. \cite{Fujimoto2018} introduced the Twin Delayed Deep Deterministic Policy Gradient (TD3) algorithm, which addresses the systematic overestimation of value functions in actor-critic methods. While overestimation bias was well-documented in discrete settings (leading to the development of Double DQN), this research formally identifies its presence and catastrophic impact on continuous control.
+The authors identify that in the presence of function approximation errors, the standard Bellman equation leads to a persistent positive bias in value estimates, which is subsequently exploited by the policy, leading to suboptimal behavior or training divergence. To counteract this, TD3 introduces three primary mechanisms:
+\begin{enumerate}
+    \item \textit{Clipped Double-Q Learning:} The agent maintains two independent critics, $(Q_{\theta_1}, Q_{\theta_2})$, and utilizes the minimum of the two estimates for the Bellman target. This enforces a conservative estimate of the value function.
+    \item \textit{Target Policy Smoothing:} By adding small amounts of random noise to the target actions during the update, the algorithm smooths out peaks in the Q-function, preventing the policy from hyper-fixating on narrow, overestimated regions of the action space.
+    \item \textit{Delayed Policy Updates:} The actor (policy) and target networks are updated less frequently than the critic. This ensures that the value function has sufficiently converged and provides a stable gradient before the policy is allowed to shift.
+\end{enumerate}
+\textbf{Technical Contribution:} 
+This paper provides a critical framework for stabilizing the \textit{Critic} in complex environments. By decoupling the frequency of value estimation from policy optimization, it ensures that the gradient signal provided to the Actor is grounded in a converged manifold. Mathematically, the target value $y$ is computed as:
+\begin{equation}
+y = r + \gamma \min_{i=1,2} Q_{\theta'_i}(s', \pi_{\phi'}(s') + \epsilon), \quad \epsilon \sim \text{clip}(\mathcal{N}(0, \sigma), -c, c)
+\end{equation}
+The inclusion of the $\min$ operator effectively treats the function approximation error as a noise-reduction problem. For architectures utilizing specialized logic (such as shared-weight MLPs or complex selectors), this stabilization is essential because it prevents the "value loss" from spiking when the agent discovers new regions of the state space.
 % --- BIBLIOGRAPHY ---
 \newpage
 \bibliographystyle{unsrt} % This defines the style

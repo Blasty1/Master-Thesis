@@ -1,5 +1,35 @@
 \begin{thebibliography}{10}
 
+\bibitem{Piuetal2014}
+F.~Piu and M.~G. Speranza.
+\newblock The locomotive assignment problem: a survey on optimization models.
+\newblock {\em International Transactions in Operational Research}, 21(3):327--352, 2014.
+
+\bibitem{Ahujaetal2005b}
+Ravindra~K. Ahuja, Jian Liu, James~B. Orlin, Dushyant Sharma, and Larry~A. Shughart.
+\newblock A multi-exchange neighborhood search algorithm for the locomotive assignment problem.
+\newblock {\em Operations Research}, 53(6):903--914, 2005.
+
+\bibitem{Vaidyanathanetal2008a}
+Bharath Vaidyanathan, Ravindra~K. Ahuja, and James~B. Orlin.
+\newblock A resource-directive decomposition approach for the locomotive assignment problem.
+\newblock {\em Operations Research}, 56(2):420--432, 2008.
+
+\bibitem{Florianetal1976}
+Michael Florian, G.~Bushell, J.~Ferland, G.~Guérin, and L.~Stewart.
+\newblock The engine scheduling problem in a railway network.
+\newblock {\em INFOR: Information Systems and Operational Research}, 14(2):121--138, 1976.
+
+\bibitem{Scholz2000}
+Andreas Scholz.
+\newblock Locomotive scheduling with maintenance constraints at the swedish state railways.
+\newblock {\em International Transactions in Operational Research}, 7(4-5):329--350, 2000.
+
+\bibitem{Powelletal2001}
+Warren~B. Powell, Katerina Papadaki, and Michael~K. Spivey.
+\newblock A multiagent, context-specific approach to the locomotive assignment problem.
+\newblock {\em Transportation Science}, 35(4):329--358, 2001.
+
 \bibitem{BasharinLangvilleNaumov2004}
 Gely~P. Basharin, Amy~N. Langville, and Valeriy~A. Naumov.
 \newblock The life and work of {A. A. Markov}.
@@ -115,36 +145,6 @@ Hangyu Dong, Qinming Liu, Chunming Ye, and Wenyi Liu.
 \newblock Periodic preventive maintenance optimization and a model for high-speed rail brake based on the limitation of reliability.
 \newblock {\em Journal of University of Shanghai for Science and Technology}, 42(4):384--389, 2020.
 
-\bibitem{Piuetal2014}
-F.~Piu and M.~G. Speranza.
-\newblock The locomotive assignment problem: a survey on optimization models.
-\newblock {\em International Transactions in Operational Research}, 21(3):327--352, 2014.
-
-\bibitem{Ahujaetal2005b}
-Ravindra~K. Ahuja, Jian Liu, James~B. Orlin, Dushyant Sharma, and Larry~A. Shughart.
-\newblock A multi-exchange neighborhood search algorithm for the locomotive assignment problem.
-\newblock {\em Operations Research}, 53(6):903--914, 2005.
-
-\bibitem{Vaidyanathanetal2008a}
-Bharath Vaidyanathan, Ravindra~K. Ahuja, and James~B. Orlin.
-\newblock A resource-directive decomposition approach for the locomotive assignment problem.
-\newblock {\em Operations Research}, 56(2):420--432, 2008.
-
-\bibitem{Florianetal1976}
-Michael Florian, G.~Bushell, J.~Ferland, G.~Guérin, and L.~Stewart.
-\newblock The engine scheduling problem in a railway network.
-\newblock {\em INFOR: Information Systems and Operational Research}, 14(2):121--138, 1976.
-
-\bibitem{Scholz2000}
-Andreas Scholz.
-\newblock Locomotive scheduling with maintenance constraints at the swedish state railways.
-\newblock {\em International Transactions in Operational Research}, 7(4-5):329--350, 2000.
-
-\bibitem{Powelletal2001}
-Warren~B. Powell, Katerina Papadaki, and Michael~K. Spivey.
-\newblock A multiagent, context-specific approach to the locomotive assignment problem.
-\newblock {\em Transportation Science}, 35(4):329--358, 2001.
-
 \bibitem{DBLP:journals/corr/abs-2006-14171}
 Shengyi Huang and Santiago Onta{\~{n}}{\'{o}}n.
 \newblock A closer look at invalid action masking in policy gradient algorithms.
@@ -154,5 +154,19 @@ Shengyi Huang and Santiago Onta{\~{n}}{\'{o}}n.
 Richard~S. Sutton, David~A. McAllester, Satinder~P. Singh, and Yishay Mansour.
 \newblock Policy gradient methods for reinforcement learning with function approximation.
 \newblock In {\em Advances in Neural Information Processing Systems (NIPS)}, pages 1057--1063, 2000.
+
+\bibitem{dietterich2000hierarchical}
+Thomas~G Dietterich.
+\newblock Hierarchical reinforcement learning with the maxq value function decomposition.
+\newblock {\em Journal of Artificial Intelligence Research}, 13:227--303, 2000.
+
+\bibitem{Kanervisto2020}
+Anssi Kanervisto, Christian Scheller, and Ville Hautamäki.
+\newblock Action space shaping in deep reinforcement learning, 2020.
+
+\bibitem{Fujimoto2018}
+Scott Fujimoto, Herke Hoof, and David Meger.
+\newblock Addressing function approximation error in actor-critic methods.
+\newblock In {\em International Conference on Machine Learning}, pages 1587--1596. PMLR, 2018.
 
 \end{thebibliography}
